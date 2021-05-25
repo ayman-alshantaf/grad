@@ -1,0 +1,13 @@
+<div class="footer-qq" >
+  <div class="container">
+    <div class="Peculiarity ">
+      <p style="margin-bottom: 0;">فرصتكم@2021</p>
+    </div>
+  </div>
+</div>
+<script src="{{URL::asset('publicAssets/js/jquery-3.5.1.min.js')}}"></script>
+<script src="{{URL::asset('publicAssets/js/bootstrap.min.js')}}"></script>
+<script src="{{URL::asset('publicAssets/js/slick.min.js')}}"></script>
+<script src="{{URL::asset('publicAssets/js/mainScript.js')}}"></script>
+</body>
+</html>
