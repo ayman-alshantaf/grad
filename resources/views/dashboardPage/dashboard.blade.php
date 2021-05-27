@@ -680,7 +680,9 @@
  footer -->
 
     @include('dashboardPage.layouts.footer-scripts')
+    <script>
 
+    </script>
 </body>
 
 </html>

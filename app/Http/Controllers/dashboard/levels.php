@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\dashboardController;
+namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\dashboard\levelsValidation;
@@ -28,26 +28,24 @@ class levels extends Controller
     public function create(levelsValidation $request)
     {
         $validated = $request->validated();
-        $levels = new level();
-        $levels->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
-        $doneAdd = $levels->save();
-        if ($doneAdd){
+        $addLevels = level::create([
+            'name'=>$request-> name
+        ]);
+        if ($addLevels){
             toastr()->success('Data has been saved successfully!');
-            return redirect()->route('level');
+            return redirect()->route('dashboard.level');
         }else{
             toastr()->error('An error has occurred please try again later.');
-            return redirect()->route('level');
+            return redirect()->route('dashboard.level');
         }
 
-//
-//        $addLevels = level::create([
-//            'name'=>$request-> name
-//        ]);
-//        if ($addLevels){
-//            return redirect()->route('level')->with(['success' => 'Done Add']);
-//        }else{
-//            return redirect()->route('level')->with(['failed' => 'failed Add']);
-//        }
+
+//        $validated = $request->validated();
+//        $levels = new level();
+//        $levels->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
+//        $doneAdd = $levels->save()
+//;
+
     }
 
     /**
@@ -80,7 +78,7 @@ class levels extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -90,11 +88,25 @@ class levels extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(levelsValidation $request , $id)
     {
-        //
+        $validated = $request->validated();
+        $level = level::find($id);
+        $levelUpdate = $level->update($request ->all());
+        if ($levelUpdate){
+            toastr()->success('Data has Update successfully!');
+            return redirect()->route('dashboard.level');
+        }else{
+            toastr()->error('An error has occurred please try again later.');
+            return redirect()->route('dashboard.level');
+        }
     }
 
+    public function dashboardLevels()
+    {
+        $dashboardLevels = level::all();
+        return view("dashboardPage.dashboard" , compact('dashboardLevels'));
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -103,6 +115,9 @@ class levels extends Controller
      */
     public function destroy($id)
     {
-        //
+        $level = level::find($id);
+        $level->delete();
+        toastr()->error('Data has delete successfully!');
+        return redirect()->route('dashboard.level');
     }
 }

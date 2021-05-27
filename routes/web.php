@@ -17,19 +17,21 @@ Auth::routes();
 
 Route::group(
     [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', "auth"]
+        'middleware' => [ "auth"]
     ], function () {
-    Route::get('/admin', function () {
-        return view("dashboard");
+//    Route::get('/admin', 'dashboard@view')->name('admin');
+//    Route::get('/dashboard', 'dashboard@view')->name('admin');
 
-    });
-    Route::get('/' , function (){
-        return view("dashboard");
-
-    });
+//    Route::get('/admin', function () {
+//        return view("dashboardPage/dashboard");
+//
+//    })->name("admin");
+//    Route::get('/dashboard' , function (){
+//        return view("dashboardPage/dashboard");
+//
+//    })->name("admin");
 //    return view('publicPages.singUp');
-    //   Route::get('/', 'HomeController@index')->name('home');
+//       Route::get('/', 'HomeController@index')->name('home');
 });
 
 

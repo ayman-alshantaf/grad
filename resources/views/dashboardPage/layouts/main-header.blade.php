@@ -3,11 +3,12 @@
         <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <!-- logo -->
             <div class="text-left navbar-brand-wrapper">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo-dark.png" alt=""></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-icon-dark.png"
+                <a class="navbar-brand brand-logo" ><img src="{{URL::asset("assets/images/logo-dark.png")}}" alt=""></a>
+                <a class="navbar-brand brand-logo-mini" ><img src="{{URL::asset("assets/images/logo-icon-dark.png")}}"
                         alt=""></a>
             </div>
             <!-- Top bar left -->
+            <ul class="nav navbar-nav mr-auto">
             <ul class="nav navbar-nav mr-auto">
 
                 <li class="nav-item">
@@ -37,14 +38,10 @@
                                 {{ $properties['native'] }}
                             </a>
                         </li>
-
                         @endforeach
-
                     </ul>
                 </li>
-                <li class="nav-item fullscreen">
-                    <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
-                </li>
+
                 <li class="nav-item dropdown ">
                     <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                         aria-expanded="false">

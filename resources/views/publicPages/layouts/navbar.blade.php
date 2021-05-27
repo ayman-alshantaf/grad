@@ -14,9 +14,9 @@
           ><i class="fa fa-list" aria-hidden="true"></i
             ></span>
     </button>
-    <a class="navbar-brand" href="index.blade.php"
-    ><h1>فرصت<span style="color: #fdbf13">كم</span></h1></a
-    >
+    <a class="navbar-brand" href="index.blade.php">
+{{--      <img src="{{asset("publicAssets/image/header/logo/6.png")}}" style="width: 200px; height: 200px">--}}
+    </a>
     <div class="logIn login-lg-hide">
       <a href="login.blade.php"><i class="fa fa-sign-in"></i> دخول</a>
       <a href="singUp.blade.php"><i class="fa fa-user-plus"></i> تسجيل</a>
