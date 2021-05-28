@@ -47,7 +47,6 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
         $this->mapDashboardRoutes();
-        $this->mapLevelsRoutes();
 
         //
     }
@@ -73,11 +72,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
 
-    protected function mapLevelsRoutes()
-    {
-        Route::namespace($this->namespace)
-            ->group(base_path('routes/dashboardRoute/levels.php'));
-    }
+
     /**
      * Define the "api" routes for the application.
      *

@@ -31,7 +31,7 @@ Route::group(
 //
 //    })->name("admin");
 //    return view('publicPages.singUp');
-//       Route::get('/', 'HomeController@index')->name('home');
+       Route::get('/', 'HomeController@index')->name('home');
 });
 
 
