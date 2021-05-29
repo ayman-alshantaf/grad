@@ -19,19 +19,9 @@ Route::group(
     [
         'middleware' => [ "auth"]
     ], function () {
-//    Route::get('/admin', 'dashboard@view')->name('admin');
-//    Route::get('/dashboard', 'dashboard@view')->name('admin');
 
-//    Route::get('/admin', function () {
-//        return view("dashboardPage/dashboard");
-//
-//    })->name("admin");
-//    Route::get('/dashboard' , function (){
-//        return view("dashboardPage/dashboard");
-//
-//    })->name("admin");
-//    return view('publicPages.singUp');
        Route::get('/', 'HomeController@index')->name('home');
+
 });
 
 

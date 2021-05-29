@@ -16,38 +16,29 @@
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">العناصر </li>
                     <!-- menu item Elements-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
+                        <a href="{{route('dashboard.level')}}" >
                             <div class="pull-left"><i class="ti-palette"></i><span
                                     class="right-nav-text">المستويات</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
+
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="elements" class="collapse" data-parent="#sidebarnav">
-                            <li ><a href="{{route('dashboard.level')}}">جميع المستويات</a></li>
-                        </ul>
                     </li>
                     <!-- menu item calendar-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
+                        <a href="{{route('dashboard.Category')}}" >
                             <div class="pull-left"><i class="ti-calendar"></i><span
                                     class="right-nav-text">المجالات</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('dashboard.Category')}}">جميع المجالات</a> </li>
-                        </ul>
                     </li>
 
                     <!-- menu item todo-->
                     <li>
-                        <a href="todo-list.html"><i class="ti-menu-alt"></i><span class="right-nav-text">Todo
-                                list</span> </a>
+                        <a href="{{route('dashboard.major')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">التخصصات</span> </a>
                     </li>
                     <!-- menu item chat-->
                     <li>
-                        <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat
-                            </span></a>
+                        <a href="{{route('dashboard.Governorate')}}"><i class="ti-comments"></i><span class="right-nav-text">المحافظات</span></a>
                     </li>
                     <!-- menu item mailbox-->
                     <li>

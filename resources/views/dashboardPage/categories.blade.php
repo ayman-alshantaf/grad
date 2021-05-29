@@ -80,6 +80,7 @@
                                             <th>{{trans("levels_tran.updated_at")}}</th>
                                             <th>{{trans("levels_tran.edit")}}</th>
                                             <th>{{trans("levels_tran.delete")}}</th>
+                                            <th>االعرض حسب</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -97,6 +98,9 @@
                                             </td>
                                             <td>
                                                 <button type="button" class="btn- btn-danger btn-block btn-sm" data-toggle="modal" data-target="#delete{{$category->id}}" >حذف<i class="fa fa-trash"></i></button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{$category->id}}" >العرض حسب</button>
                                             </td>
                                         </tr>
 

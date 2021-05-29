@@ -15,7 +15,7 @@ Route::group(
     Route::get('levels', 'levels@index')->name('dashboard.level');
     Route::post('addLevel', 'levels@create')->name('dashboard.addLevel');
     Route::post('updateLevels/{id}', 'levels@update')->name('dashboard.updateLevels');
-    Route::post('delete/{id}', 'levels@destroy')->name('dashboard.deleteLevels');
+    Route::post('deleteLevels/{id}', 'levels@destroy')->name('dashboard.deleteLevels');
 
     //Routes Categories
     Route::get('categories', 'CategoriesController@index')->name('dashboard.Category');
@@ -23,34 +23,16 @@ Route::group(
     Route::post('updateCategory/{id}', 'CategoriesController@update')->name('dashboard.updateCategory');
     Route::post('deleteCategory/{id}', 'CategoriesController@destroy')->name('dashboard.deleteCategory');
 
+    //Routes Categories
+    Route::get('majors', 'MajorsController@index')->name('dashboard.major');
+    Route::post('addMajor', 'MajorsController@create')->name('dashboard.addMajor');
+    Route::post('updateMajor/{id}', 'MajorsController@update')->name('dashboard.updateMajor');
+    Route::post('deleteMajor/{id}', 'MajorsController@destroy')->name('dashboard.deleteMajor');
+
+    //routing Governorate
+    Route::get('Governorate', 'GovernorateController@index')->name('dashboard.Governorate');
+    Route::post('addGovernorate', 'GovernorateController@create')->name('dashboard.addGovernorate');
+    Route::post('updateGovernorate/{id}', 'GovernorateController@update')->name('dashboard.updateGovernorate');
+    Route::post('deleteGovernorate/{id}', 'GovernorateController@destroy')->name('dashboard.deleteGovernorate');
 });
 
-
-//Route::prefix("dashboard")->name("dashboard.")->group(function (){
-//
-//    //routing index
-//
-//    Route::group(
-//        [
-//            'middleware' => ['web' , 'auth'],
-//        ], function () {
-//            Route::get('/index', 'dashboard@view')->name('admin');
-//    });
-//
-////routing levels
-//
-//    Route::group(
-//        [
-//            'middleware' => ['web'],
-//        ], function () {
-//        Route::get('levels', 'levels@index')->name('level');
-//        Route::post('addLevel', 'levels@create')->name('addLevel');
-//        Route::get('editLevel/{id}', 'levels@edit')->name('editLevel');
-//        Route::post('updateLevels/{id}', 'levels@update')->name('updateLevels');
-//        Route::post('delete/{id}', 'levels@destroy')->name('deleteLevels');
-//    });
-//
-
-//
-//
-//});
