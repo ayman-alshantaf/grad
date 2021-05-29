@@ -15,11 +15,12 @@
             ></span>
     </button>
     <a class="navbar-brand" href="index.blade.php">
-{{--      <img src="{{asset("publicAssets/image/header/logo/6.png")}}" style="width: 200px; height: 200px">--}}
+      <a class="navbar-brand" href="index.html"
+      ><h1>فرص<span style="color: #fdbf13">تنا</span></h1></a
     </a>
     <div class="logIn login-lg-hide">
-      <a href="login.blade.php"><i class="fa fa-sign-in"></i> دخول</a>
-      <a href="singUp.blade.php"><i class="fa fa-user-plus"></i> تسجيل</a>
+      <a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> دخول</a>
+      <a href="{{ route('register') }}"><i class="fa fa-user-plus"></i> تسجيل</a>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0">
@@ -39,8 +40,8 @@
       </ul>
     </div>
     <div class="logIn login-md-hide">
-      <a href="login.blade.php"><i class="fa fa-sign-in"></i> دخول</a>
-      <a href="singUp.blade.php"><i class="fa fa-user-plus"></i> تسجيل</a>
+      <a href="{{route('login')}}"><i class="fa fa-sign-in"></i> دخول</a>
+      <a href="{{route('register')}}"><i class="fa fa-user-plus"></i> تسجيل</a>
     </div>
   </div>
 </nav>

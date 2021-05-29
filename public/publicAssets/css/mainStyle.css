@@ -1155,6 +1155,19 @@ display: none;
   left: 0;
   top: 0;
 }
+.login-company .container .image-login .overly-image-login{
+  width: 100%;
+  height: 100%;
+  background-image: url(../image/header/grad/company.jfif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(2.5px);
+  z-index: 100;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 .section-logIn .container .image-login .overly-image-login-color{
   width: 100%;
   height: 100%;

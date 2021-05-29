@@ -70,28 +70,9 @@
           </div>
         </div>
         <div class="col-md-4 col-sm-4">
-          <h4>أقسام الموقع </h4>
+          <h1 style="color: white;margin-bottom: 15px;margin-top: -11px">فرص<span style="color: #ffc221">تنا</span> </h1>
           <div class="row">
-            <div class="col-md-6 col-sm-6">
-              <a href="index.blade.php">
-                <p>الصفحة الرئيسية</p>
-              </a>
-              <a href="findTraining.blade.php">
-                <p>فرص التدريب</p>
-              </a>
-              <a href="findTraining.blade.php">
-                <p>التخصصات</p>
-              </a>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <a href="findTraining.blade.php">
-                <p>اضافة تدريب</p>
-              </a>
-              <a href="index.blade.php">
-                <p>اتصل بنا</p>
-              </a>
-
-            </div>
+            <p>هو عبارة عن موقع لتوفير فرص التدريب للطلاب الخريجين واصحاب القدرات.</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-6">
