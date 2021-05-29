@@ -22,6 +22,17 @@ Route::group(
     Route::post('addCompanies', 'CompaniesController@create')->name('dashboard.addCompanies');
     Route::post('updateCompanies/{id}', 'CompaniesController@update')->name('dashboard.updateCompanies');
     Route::post('deleteCompanies/{id}', 'CompaniesController@destroy')->name('dashboard.deleteCompanies');
+    //routing Admin
+    Route::get('Admin', 'AdminController@index')->name('dashboard.Admin');
+    Route::post('addAdmin', 'AdminController@create')->name('dashboard.addAdmin');
+    Route::post('updateAdmin/{id}', 'AdminController@update')->name('dashboard.updateAdmin');
+    Route::post('deleteAdmin/{id}', 'AdminController@destroy')->name('dashboard.deleteAdmin');
+
+    //routing posts
+    Route::get('post', 'PostController@index')->name('dashboard.post');
+    Route::post('addPost', 'PostController@create')->name('dashboard.addPost');
+    Route::post('updatePost/{id}', 'PostController@update')->name('dashboard.updatePost');
+    Route::post('deletePost/{id}', 'PostController@destroy')->name('dashboard.deletePost');
 
     //routing levels
     Route::get('levels', 'levels@index')->name('dashboard.level');
