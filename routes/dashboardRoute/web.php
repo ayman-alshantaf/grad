@@ -5,12 +5,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(
     [
-        'middleware' => [ 'web',"auth"],
+        'middleware' => [ 'web',"isadmin"],
         'prefix'=>'dashboard',
         'name'=>'dashboard.'
     ], function () {
     //routing index
     Route::get('/index', 'dashboard@view')->name('dashboard.admin');
+
+    //routing students
+    Route::get('Students', 'StudentsController@index')->name('dashboard.students');
+    Route::post('addStudents', 'StudentsController@create')->name('dashboard.addStudents');
+    Route::post('updateStudents/{id}', 'StudentsController@update')->name('dashboard.updateStudents');
+    Route::post('deleteStudents/{id}', 'StudentsController@destroy')->name('dashboard.deleteStudents');
+    //routing companies
+    Route::get('companies', 'CompaniesController@index')->name('dashboard.companies');
+    Route::post('addCompanies', 'CompaniesController@create')->name('dashboard.addCompanies');
+    Route::post('updateCompanies/{id}', 'CompaniesController@update')->name('dashboard.updateCompanies');
+    Route::post('deleteCompanies/{id}', 'CompaniesController@destroy')->name('dashboard.deleteCompanies');
+
     //routing levels
     Route::get('levels', 'levels@index')->name('dashboard.level');
     Route::post('addLevel', 'levels@create')->name('dashboard.addLevel');

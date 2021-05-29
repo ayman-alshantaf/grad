@@ -14,6 +14,21 @@
                     </li>
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">العناصر </li>
+                    <li>
+                        <a href="{{route('dashboard.students')}}" >
+                            <div class="pull-left"><i class="ti-palette"></i><span
+                                        class="right-nav-text">الطلاب</span></div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.companies')}}" >
+                            <div class="pull-left"><i class="ti-palette"></i><span
+                                        class="right-nav-text">الشركات</span></div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
+
                     <!-- menu item Elements-->
                     <li>
                         <a href="{{route('dashboard.level')}}" >
@@ -23,6 +38,8 @@
                             <div class="clearfix"></div>
                         </a>
                     </li>
+
+
                     <!-- menu item calendar-->
                     <li>
                         <a href="{{route('dashboard.Category')}}" >
