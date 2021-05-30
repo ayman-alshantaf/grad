@@ -246,238 +246,245 @@
             </div>
           </div>
           <div class="col-md-9 training-new">
+            @if(count($allPosts) <= 0)
+              <div class="alert alert-warning">عذرا لا يوجد فرص تدريب متاحة لهذا التخصص</div>
+            @else
+            @foreach($allPosts as $post)
             <div class="training">
               <div class="img-company">
                 <img src="image/header/grad/11.jfif" alt="" />
               </div>
               <div class="description-training">
                 <div class="title-desc-training">
-                  <a href="desctraining.blade.php">
-                    <h6>تطوير مشروع ويب</h6>
+                  <a href="{{route('descriptionPost', $post->id)}}">
+                    <h6>{{$post->title}}</h6>
                   </a>
-                  <span><i class="fa fa-user"></i>شركة العلاء</span>
+                  <span><i class="fa fa-user"></i>
+                    {{$post->postUser->name}}
+                  </span>
                   <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
                   <span><i class="fa fa-spinner"></i>5 متقدمين</span>
                 </div>
                 <div class="content-description">
                   <p class="text-desc-training">
-                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق
-                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون
-                    المتدرب قادرا على تنفيذ المهام بقدر ......
+                    {{$post->description}}
                   </p>
                 </div>
                 <div class="footer-description">
-                  <span><i class="fa fa-user"></i>كلية تكنولوجيا المعوماتك</span>
-                  <span><i class="fa fa-user"></i>تخصص وسائط متعددة</span>
+                  <span><i class="fa fa-user"></i>{{$post->postCategory->name}}</span>
+                  <span><i class="fa fa-user"></i>{{$post->postMajor->name}}</span>
+                  <span><i class="fa fa-user"></i>{{$post->postGovernorate->name}}</span>
                 </div>
                 <div class="overly-time-training">
-                  <span>أخر موعد: 15/5/2021</span>
+                  <span>أخر موعد: {{$post->final_date}}</span>
                 </div>
               </div>
             </div>
-            <div class="training">
-              <div class="img-company">
-                <img src="image/header/grad/11.jfif" alt="" />
-              </div>
-              <div class="description-training">
-                <div class="title-desc-training">
-                  <a href="desctraining.blade.php">
-                    <h6>تطوير مشروع ويب</h6>
-                  </a>
-                  <span><i class="fa fa-user"></i>شركة العلاء</span>
-                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                </div>
-                <div class="content-description">
-                  <p class="text-desc-training">
-                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق
-                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون
-                    المتدرب قادرا على تنفيذ المهام بقدر ......
-                  </p>
-                </div>
-                <div class="footer-description">
-                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>
-                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>
-                </div>
-                <div class="overly-time-training">
-                  <span>أخر موعد: 15/5/2021</span>
-                </div>
-              </div>
-            </div>
-            <div class="training">
-              <div class="img-company">
-                <img src="image/header/grad/11.jfif" alt="" />
-              </div>
-              <div class="description-training">
-                <div class="title-desc-training">
-                  <a href="desctraining.blade.php">
-                    <h6>تطوير مشروع ويب</h6>
-                  </a>
-                  <span><i class="fa fa-user"></i>شركة العلاء</span>
-                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                </div>
-                <div class="content-description">
-                  <p class="text-desc-training">
-                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق
-                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون
-                    المتدرب قادرا على تنفيذ المهام بقدر ......
-                  </p>
-                </div>
-                <div class="footer-description">
-                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>
-                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>
-                </div>
-                <div class="overly-time-training">
-                  <span>أخر موعد: 15/5/2021</span>
-                </div>
-              </div>
-            </div>
-            <div class="training">
-              <div class="img-company">
-                <img src="image/header/grad/11.jfif" alt="" />
-              </div>
-              <div class="description-training">
-                <div class="title-desc-training">
-                  <a href="desctraining.blade.php">
-                    <h6>تطوير مشروع ويب</h6>
-                  </a>
-                  <span><i class="fa fa-user"></i>شركة العلاء</span>
-                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                </div>
-                <div class="content-description">
-                  <p class="text-desc-training">
-                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق
-                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون
-                    المتدرب قادرا على تنفيذ المهام بقدر ......
-                  </p>
-                </div>
-                <div class="footer-description">
-                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>
-                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>
-                </div>
-                <div class="overly-time-training">
-                  <span>أخر موعد: 15/5/2021</span>
-                </div>
-              </div>
-            </div>
-            <div class="training">
-              <div class="img-company">
-                <img src="image/header/grad/11.jfif" alt="" />
-              </div>
-              <div class="description-training">
-                <div class="title-desc-training">
-                  <a href="desctraining.blade.php">
-                    <h6>تطوير مشروع ويب</h6>
-                  </a>
-                  <span><i class="fa fa-user"></i>شركة العلاء</span>
-                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                </div>
-                <div class="content-description">
-                  <p class="text-desc-training">
-                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق
-                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون
-                    المتدرب قادرا على تنفيذ المهام بقدر ......
-                  </p>
-                </div>
-                <div class="footer-description">
-                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>
-                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>
-                </div>
-                <div class="overly-time-training">
-                  <span>أخر موعد: 15/5/2021</span>
-                </div>
-              </div>
-            </div>
-            <div class="training">
-              <div class="img-company">
-                <img src="image/header/grad/11.jfif" alt="" />
-              </div>
-              <div class="description-training">
-                <div class="title-desc-training">
-                  <a href="desctraining.blade.php">
-                    <h6>تطوير مشروع ويب</h6>
-                  </a>
-                  <span><i class="fa fa-user"></i>شركة العلاء</span>
-                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                </div>
-                <div class="content-description">
-                  <p class="text-desc-training">
-                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق
-                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون
-                    المتدرب قادرا على تنفيذ المهام بقدر ......
-                  </p>
-                </div>
-                <div class="footer-description">
-                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>
-                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>
-                </div>
-                <div class="overly-time-training">
-                  <span>أخر موعد: 15/5/2021</span>
-                </div>
-              </div>
-            </div>
-            <div class="training">
-              <div class="img-company">
-                <img src="image/header/grad/11.jfif" alt="" />
-              </div>
-              <div class="description-training">
-                <div class="title-desc-training">
-                  <a href="desctraining.blade.php">
-                    <h6>تطوير مشروع ويب</h6>
-                  </a>
-                  <span><i class="fa fa-user"></i>شركة العلاء</span>
-                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                </div>
-                <div class="content-description">
-                  <p class="text-desc-training">
-                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق
-                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون
-                    المتدرب قادرا على تنفيذ المهام بقدر ......
-                  </p>
-                </div>
-                <div class="footer-description">
-                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>
-                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>
-                </div>
-                <div class="overly-time-training">
-                  <span>أخر موعد: 15/5/2021</span>
-                </div>
-              </div>
-            </div>
-            <div class="training">
-              <div class="img-company">
-                <img src="image/header/grad/11.jfif" alt="" />
-              </div>
-              <div class="description-training">
-                <div class="title-desc-training">
-                  <a href="desctraining.blade.php">
-                    <h6>تطوير مشروع ويب</h6>
-                  </a>
-                  <span><i class="fa fa-user"></i>شركة العلاء</span>
-                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                </div>
-                <div class="content-description">
-                  <p class="text-desc-training">
-                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق
-                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون
-                    المتدرب قادرا على تنفيذ المهام بقدر ......
-                  </p>
-                </div>
-                <div class="footer-description">
-                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>
-                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>
-                </div>
-                <div class="overly-time-training">
-                  <span>أخر موعد: 15/5/2021</span>
-                </div>
-              </div>
-            </div>
+            @endforeach
+            @endif
+{{--            <div class="training">--}}
+{{--              <div class="img-company">--}}
+{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
+{{--              </div>--}}
+{{--              <div class="description-training">--}}
+{{--                <div class="title-desc-training">--}}
+{{--                  <a href="desctraining.blade.php">--}}
+{{--                    <h6>تطوير مشروع ويب</h6>--}}
+{{--                  </a>--}}
+{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
+{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
+{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
+{{--                </div>--}}
+{{--                <div class="content-description">--}}
+{{--                  <p class="text-desc-training">--}}
+{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
+{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
+{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
+{{--                  </p>--}}
+{{--                </div>--}}
+{{--                <div class="footer-description">--}}
+{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
+{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
+{{--                </div>--}}
+{{--                <div class="overly-time-training">--}}
+{{--                  <span>أخر موعد: 15/5/2021</span>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--            <div class="training">--}}
+{{--              <div class="img-company">--}}
+{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
+{{--              </div>--}}
+{{--              <div class="description-training">--}}
+{{--                <div class="title-desc-training">--}}
+{{--                  <a href="desctraining.blade.php">--}}
+{{--                    <h6>تطوير مشروع ويب</h6>--}}
+{{--                  </a>--}}
+{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
+{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
+{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
+{{--                </div>--}}
+{{--                <div class="content-description">--}}
+{{--                  <p class="text-desc-training">--}}
+{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
+{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
+{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
+{{--                  </p>--}}
+{{--                </div>--}}
+{{--                <div class="footer-description">--}}
+{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
+{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
+{{--                </div>--}}
+{{--                <div class="overly-time-training">--}}
+{{--                  <span>أخر موعد: 15/5/2021</span>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--            <div class="training">--}}
+{{--              <div class="img-company">--}}
+{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
+{{--              </div>--}}
+{{--              <div class="description-training">--}}
+{{--                <div class="title-desc-training">--}}
+{{--                  <a href="desctraining.blade.php">--}}
+{{--                    <h6>تطوير مشروع ويب</h6>--}}
+{{--                  </a>--}}
+{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
+{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
+{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
+{{--                </div>--}}
+{{--                <div class="content-description">--}}
+{{--                  <p class="text-desc-training">--}}
+{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
+{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
+{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
+{{--                  </p>--}}
+{{--                </div>--}}
+{{--                <div class="footer-description">--}}
+{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
+{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
+{{--                </div>--}}
+{{--                <div class="overly-time-training">--}}
+{{--                  <span>أخر موعد: 15/5/2021</span>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--            <div class="training">--}}
+{{--              <div class="img-company">--}}
+{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
+{{--              </div>--}}
+{{--              <div class="description-training">--}}
+{{--                <div class="title-desc-training">--}}
+{{--                  <a href="desctraining.blade.php">--}}
+{{--                    <h6>تطوير مشروع ويب</h6>--}}
+{{--                  </a>--}}
+{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
+{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
+{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
+{{--                </div>--}}
+{{--                <div class="content-description">--}}
+{{--                  <p class="text-desc-training">--}}
+{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
+{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
+{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
+{{--                  </p>--}}
+{{--                </div>--}}
+{{--                <div class="footer-description">--}}
+{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
+{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
+{{--                </div>--}}
+{{--                <div class="overly-time-training">--}}
+{{--                  <span>أخر موعد: 15/5/2021</span>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--            <div class="training">--}}
+{{--              <div class="img-company">--}}
+{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
+{{--              </div>--}}
+{{--              <div class="description-training">--}}
+{{--                <div class="title-desc-training">--}}
+{{--                  <a href="desctraining.blade.php">--}}
+{{--                    <h6>تطوير مشروع ويب</h6>--}}
+{{--                  </a>--}}
+{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
+{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
+{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
+{{--                </div>--}}
+{{--                <div class="content-description">--}}
+{{--                  <p class="text-desc-training">--}}
+{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
+{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
+{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
+{{--                  </p>--}}
+{{--                </div>--}}
+{{--                <div class="footer-description">--}}
+{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
+{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
+{{--                </div>--}}
+{{--                <div class="overly-time-training">--}}
+{{--                  <span>أخر موعد: 15/5/2021</span>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--            <div class="training">--}}
+{{--              <div class="img-company">--}}
+{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
+{{--              </div>--}}
+{{--              <div class="description-training">--}}
+{{--                <div class="title-desc-training">--}}
+{{--                  <a href="desctraining.blade.php">--}}
+{{--                    <h6>تطوير مشروع ويب</h6>--}}
+{{--                  </a>--}}
+{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
+{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
+{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
+{{--                </div>--}}
+{{--                <div class="content-description">--}}
+{{--                  <p class="text-desc-training">--}}
+{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
+{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
+{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
+{{--                  </p>--}}
+{{--                </div>--}}
+{{--                <div class="footer-description">--}}
+{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
+{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
+{{--                </div>--}}
+{{--                <div class="overly-time-training">--}}
+{{--                  <span>أخر موعد: 15/5/2021</span>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--            <div class="training">--}}
+{{--              <div class="img-company">--}}
+{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
+{{--              </div>--}}
+{{--              <div class="description-training">--}}
+{{--                <div class="title-desc-training">--}}
+{{--                  <a href="desctraining.blade.php">--}}
+{{--                    <h6>تطوير مشروع ويب</h6>--}}
+{{--                  </a>--}}
+{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
+{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
+{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
+{{--                </div>--}}
+{{--                <div class="content-description">--}}
+{{--                  <p class="text-desc-training">--}}
+{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
+{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
+{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
+{{--                  </p>--}}
+{{--                </div>--}}
+{{--                <div class="footer-description">--}}
+{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
+{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
+{{--                </div>--}}
+{{--                <div class="overly-time-training">--}}
+{{--                  <span>أخر موعد: 15/5/2021</span>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
           </div>
         </div>
       </div>

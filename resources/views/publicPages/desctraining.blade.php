@@ -26,49 +26,42 @@
           <div class="col-md right-post">
             <div class="section-right-desc-post">
               <div class="hea-desc-post">
-                <h5>تطوير مشروع ويب</h5>
+                <h5>{{$descriptionPost->title}}</h5>
                 <div class="info-header">
                   <span>
                     <i class="fa fa-building-o" aria-hidden="true"></i>
-                    ويب سايت
+                    {{$descriptionPost->postUser->name}}
                   </span>
                   <span>
                     <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    منذ 15 ساعة
+                    {{$descriptionPost->created_at}}
                   </span>
                   <span>
                     <i class="fa fa-user"></i>
-                    تكنلوجيا المعلومات
+                    {{$descriptionPost->postCategory->name}}
                   </span>
                   <span>
                     <i class="fa fa-user"></i>
-                    وسائط متعددة
+                     {{$descriptionPost->postMajor->name}}
                   </span>
                 </div>
               </div>
               <div class="desc-training">
                 <h6>وصف التدريب</h6>
-                <p>نبحث في عَشْتَار المجلة عن متخصص(ة) في كتابة مجموعة (٢٠) مقالات في ريادة الأعمال النسائية والبزنس.
-                  نبحث في عَشْتَار المجلة عن متخصص(ة) في كتابة مجموعة (٢٠) مقالات في ريادة الأعمال النسائية والبزنس.
-                  الشخص المثالي لهذه المهمة بالنسبة لنا يستطيع إنتاج محتوى أصلي ذو جودة مُتماشي مع رؤية ورسالة المجلة. نبحث في عَشْتَار المجلة عن متخصص(ة) في كتابة مجموعة (٢٠) مقالات في ريادة الأعمال النسائية والبزنس.
-                  الشخص المثالي لهذه المهمة بالنسبة لنا يستطيع إنتاج محتوى أصلي ذو جودة مُتماشي مع رؤية ورسالة المجلة. نبحث في عَشْتَار المجلة عن متخصص(ة) في كتابة مجموعة (٢٠) مقالات في ريادة الأعمال النسائية والبزنس.
-                  الشخص المثالي لهذه المهمة بالنسبة لنا يستطيع إنتاج محتوى أصلي ذو جودة مُتماشي مع رؤية ورسالة المجلة. نبحث في عَشْتَار المجلة عن متخصص(ة) في كتابة مجموعة (٢٠) مقالات في ريادة الأعمال النسائية والبزنس.
-                  الشخص المثالي لهذه المهمة بالنسبة لنا يستطيع إنتاج محتوى أصلي ذو جودة مُتماشي مع رؤية ورسالة المجلة.     الشخص المثالي لهذه المهمة بالنسبة لنا يستطيع إنتاج محتوى أصلي ذو جودة مُتماشي مع رؤية ورسالة المجلة. </p>
+                <p> {{$descriptionPost->description}}</p>
               </div>
               <div class="tasks-training">
                 <h6>مهام التدريب</h6>
-                <ul>
-                  <li>انشاء مواقع ويب ضمن ريق العمل</li>
-                  <li> تطوير خبرة المتدرب </li>
-                  <li>تعليم المتدرب للعمل مع فريق العمل</li>
-                </ul>
+                <p>
+                  {{$descriptionPost->skills}}
+                </p>
               </div>
               <div class="Notes-training">
                 <h6>الملاحظات</h6>
                 <ul>
-                  <li>مدة التدريب 5 أيام</li>
-                  <li>مكان التدريب ( غزة-الرمال-مقابل كابتل مول)</li>
-                  <li>أخر  موعد للتقديم للتدريب 15-1-2021</li>
+                  <li>مدة التدريب: <span>{{$descriptionPost->training_time}}</span></li>
+                  <li>مكان التدريب :<span>{{$descriptionPost->postGovernorate->name}} / {{$descriptionPost->desc_place}}</span></li>
+                  <li>أخر  موعد للتقديم للتدريب:<span>{{$descriptionPost->final_date}}</span></li>
                   
                 </ul>
               </div>
@@ -79,18 +72,28 @@
             </div>
          
             <div class="send-request">
+              @guest
+                <div class="alert alert-warning">
+                  يرجى تسجيل الدخول لتتمكن من التقديم للتدريب
+                  <a href="{{route('login')}}">تسجيل دخول</a>
+                </div>
+              @else
               <h5>تقديم طلب للتدريب</h5>
-              <form>
+              <form method="post" action="{{route('addSpeech')}}">
+                @csrf
                 <div class="form-group">
                   <label>خطاب المتدرب</label>
-                  <textarea class="form-control" placeholder="ادخل خطابك للشركة " rows="8"></textarea>
+                  <textarea class="form-control" name="speech" placeholder="ادخل خطابك للشركة " rows="8" required></textarea>
                   <p class="notic-file"> يفضل تقديم أفضل خطاب للشركة بشكل مفصل ومقنع لقبولك بالتدريب من قبل الشركة</p>
                 </div>
                 <div class="form-group">
                   <label>ملف السيرة الذاتية</label>
-                  <input type="file" class="form-control " required >
+                  <input type="file" name="cv" class="form-control " required >
                   <p class="notic-file">الامتدادات المسموحة: pdf, doc, docx. الحجم الاقصى للملف 50MB </p>
                 </div>
+                <input type="hidden" name="post_id" value="{{$descriptionPost->id}}">
+                <input type="hidden" name="company_id" value="{{$descriptionPost->postUser->id}}">
+                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                 <div class="form-group">
                   <button type="submit" class=" btn btn-primary">
                      <i class="fa fa-paper-plane-o"></i>
@@ -98,90 +101,94 @@
                   </button>
                 </div>
               </form>
+              @endguest
             </div>
+
           </div>
           <div class="col-md-3 left-post">
             <div class="section-left-desc-post">
               <h5>تدريبات مشابهه</h5>
               <div class="other-training">
+                @foreach($similarPosts as $similarPost)
                 <div class="training">
-                  <h6>تطوير تطبيقات اندرويد</h6>
+                  <a href="{{route('descriptionPost' , $similarPost->id)}}"> <h6>{{$similarPost->title}}</h6></a>
                   <div class="span-other-training">
                     <span>
                       <i class="fa fa-user"></i>
-                      المهندسون
+                      {{$similarPost->postUser->name}}
                     </span>
                     <span>
                       <i class="fa fa-user"></i>
-                      تخصص وسائط متعددة
+                       {{$similarPost->postCategory->name}}
                     </span>
                   </div>
                 </div>
-                <div class="training">
-                  <h6>تطوير تطبيقات اندرويد</h6>
-                  <div class="span-other-training">
-                    <span>
-                      <i class="fa fa-user"></i>
-                      المهندسون
-                    </span>
-                    <span>
-                      <i class="fa fa-user"></i>
-                      تخصص وسائط متعددة
-                    </span>
-                  </div>
-                </div>
-                <div class="training">
-                  <h6>تطوير تطبيقات اندرويد</h6>
-                  <div class="span-other-training">
-                    <span>
-                      <i class="fa fa-user"></i>
-                      المهندسون
-                    </span>
-                    <span>
-                      <i class="fa fa-user"></i>
-                      تخصص وسائط متعددة
-                    </span>
-                  </div>
-                </div>
-                <div class="training">
-                  <h6>تطوير تطبيقات اندرويد</h6>
-                  <div class="span-other-training">
-                    <span>
-                      <i class="fa fa-user"></i>
-                      المهندسون
-                    </span>
-                    <span>
-                      <i class="fa fa-user"></i>
-                      تخصص وسائط متعددة
-                    </span>
-                  </div>
-                </div>
-                <div class="training">
-                  <h6>تطوير تطبيقات اندرويد</h6>
-                  <div class="span-other-training">
-                    <span>
-                      <i class="fa fa-user"></i>
-                      المهندسون
-                    </span>
-                    <span>
-                      <i class="fa fa-user"></i>
-                      تخصص وسائط متعددة
-                    </span>
-                  </div>
-                </div>
-                <div class="training">
-                  <h6>تطوير تطبيقات اندرويد</h6>
-                  <div class="span-other-training">
-                    <span>
-                      <i class="fa fa-user"></i>
-                      المهندسون
-                    </span>
-                    <span>
-                      <i class="fa fa-user"></i>
-                      تخصص وسائط متعددة
-                    </span>
-                  </div>
-                </div>
+                @endforeach
+{{--                <div class="training">--}}
+{{--                  <h6>تطوير تطبيقات اندرويد</h6>--}}
+{{--                  <div class="span-other-training">--}}
+{{--                    <span>--}}
+{{--                      <i class="fa fa-user"></i>--}}
+{{--                      المهندسون--}}
+{{--                    </span>--}}
+{{--                    <span>--}}
+{{--                      <i class="fa fa-user"></i>--}}
+{{--                      تخصص وسائط متعددة--}}
+{{--                    </span>--}}
+{{--                  </div>--}}
+{{--                </div>--}}
+{{--                <div class="training">--}}
+{{--                  <h6>تطوير تطبيقات اندرويد</h6>--}}
+{{--                  <div class="span-other-training">--}}
+{{--                    <span>--}}
+{{--                      <i class="fa fa-user"></i>--}}
+{{--                      المهندسون--}}
+{{--                    </span>--}}
+{{--                    <span>--}}
+{{--                      <i class="fa fa-user"></i>--}}
+{{--                      تخصص وسائط متعددة--}}
+{{--                    </span>--}}
+{{--                  </div>--}}
+{{--                </div>--}}
+{{--                <div class="training">--}}
+{{--                  <h6>تطوير تطبيقات اندرويد</h6>--}}
+{{--                  <div class="span-other-training">--}}
+{{--                    <span>--}}
+{{--                      <i class="fa fa-user"></i>--}}
+{{--                      المهندسون--}}
+{{--                    </span>--}}
+{{--                    <span>--}}
+{{--                      <i class="fa fa-user"></i>--}}
+{{--                      تخصص وسائط متعددة--}}
+{{--                    </span>--}}
+{{--                  </div>--}}
+{{--                </div>--}}
+{{--                <div class="training">--}}
+{{--                  <h6>تطوير تطبيقات اندرويد</h6>--}}
+{{--                  <div class="span-other-training">--}}
+{{--                    <span>--}}
+{{--                      <i class="fa fa-user"></i>--}}
+{{--                      المهندسون--}}
+{{--                    </span>--}}
+{{--                    <span>--}}
+{{--                      <i class="fa fa-user"></i>--}}
+{{--                      تخصص وسائط متعددة--}}
+{{--                    </span>--}}
+{{--                  </div>--}}
+{{--                </div>--}}
+{{--                <div class="training">--}}
+{{--                  <h6>تطوير تطبيقات اندرويد</h6>--}}
+{{--                  <div class="span-other-training">--}}
+{{--                    <span>--}}
+{{--                      <i class="fa fa-user"></i>--}}
+{{--                      المهندسون--}}
+{{--                    </span>--}}
+{{--                    <span>--}}
+{{--                      <i class="fa fa-user"></i>--}}
+{{--                      تخصص وسائط متعددة--}}
+{{--                    </span>--}}
+{{--                  </div>--}}
+{{--                </div>--}}
               </div>
             </div>
           </div>

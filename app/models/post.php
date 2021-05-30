@@ -2,13 +2,14 @@
 
 namespace App\models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class post extends Model
 {
     protected $table = "posts";
-    protected $fillable = ['name' ,'title', 'description', 'category_id', '	major_id'
-        , 'major_id', 'final_date' ,'governorate_id','created_at' , 'updated_at'];
+    protected $fillable = ['name' ,'title', 'description', 'category_id', '	major_id','user_id','training_time',
+        'skills','desc_place', 'major_id', 'final_date' ,'governorate_id','created_at' , 'updated_at'];
 
     public function postCategory(){
         return $this->belongsTo(categorie::class , 'category_id' , 'id');
@@ -19,5 +20,8 @@ class post extends Model
     public function postGovernorate(){
     return $this->belongsTo(governorate::class , 'governorate_id' , 'id');
 }
+    public function postUser(){
+        return $this->belongsTo(User::class , 'user_id' , 'id');
+    }
 
 }

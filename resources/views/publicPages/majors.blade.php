@@ -73,204 +73,27 @@
         <div class="container">
 
         <div class="row">
+          @foreach($category as $category_major)
           <div class="col-md-4">
             <div class="collegeAndMajor">
               <div class="title-college">
                 <h4>
-                  <i class="fa fa-minus" aria-hidden="true"></i> تكنلوجيا المعلومات
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                  {{$category_major->name}}
                 </h4>
               </div>
               <div class="allMajors">
+                @foreach($majors as $major)
+                  @if($major->category_id == $category_major->id)
                 <div class="t-major">
-                  <a href="#">تطبيقات الويب</a>
+                  <a href="{{route('specificMajor' , $major->id)}}">{{$major->name}}</a>
                 </div>
-                <div class="t-major">
-                  <a href="#">تطبيقات الاندرويد</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">برمجة مواقع الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">هندسة البرمجيات والحاسوب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">علم شبكات الانترنت</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">تطوير برامج سطح المكتب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">تطبيقات الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">برمجة مواقع الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">هندسة البرمجيات والحاسوب</a>
-                </div>
+                  @endif
+                @endforeach
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="collegeAndMajor">
-              <div class="title-college">
-                <h4>
-                  <i class="fa fa-minus" aria-hidden="true"></i> تكنلوجيا المعلومات
-                </h4>
-              </div>
-              <div class="allMajors">
-                <div class="t-major">
-                  <a href="#">تطبيقات الويب</a>
-                </div>
-             
-                <div class="t-major">
-                  <a href="#">هندسة البرمجيات والحاسوب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">علم شبكات الانترنت</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">تطوير برامج سطح المكتب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">تطبيقات الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">برمجة مواقع الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">هندسة البرمجيات والحاسوب</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="collegeAndMajor">
-              <div class="title-college">
-                <h4>
-                  <i class="fa fa-minus" aria-hidden="true"></i> تكنلوجيا المعلومات
-                </h4>
-              </div>
-              <div class="allMajors">
-                <div class="t-major">
-                  <a href="#">تطبيقات الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">تطبيقات الاندرويد</a>
-                </div>
-               
-                <div class="t-major">
-                  <a href="#">تطبيقات الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">برمجة مواقع الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">هندسة البرمجيات والحاسوب</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="collegeAndMajor">
-              <div class="title-college">
-                <h4>
-                  <i class="fa fa-minus" aria-hidden="true"></i> تكنلوجيا المعلومات
-                </h4>
-              </div>
-              <div class="allMajors">
-                <div class="t-major">
-                  <a href="#">تطبيقات الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">تطبيقات الاندرويد</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">برمجة مواقع الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">هندسة البرمجيات والحاسوب</a>
-                </div>
-               
-                <div class="t-major">
-                  <a href="#">تطوير برامج سطح المكتب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">تطبيقات الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">برمجة مواقع الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">هندسة البرمجيات والحاسوب</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="collegeAndMajor">
-              <div class="title-college">
-                <h4>
-                  <i class="fa fa-minus" aria-hidden="true"></i> تكنلوجيا المعلومات
-                </h4>
-              </div>
-              <div class="allMajors">
-                <div class="t-major">
-                  <a href="#">تطبيقات الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">تطبيقات الاندرويد</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">برمجة مواقع الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">هندسة البرمجيات والحاسوب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">علم شبكات الانترنت</a>
-                </div>
-               
-                <div class="t-major">
-                  <a href="#">برمجة مواقع الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">هندسة البرمجيات والحاسوب</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="collegeAndMajor">
-              <div class="title-college">
-                <h4>
-                  <i class="fa fa-minus" aria-hidden="true"></i> تكنلوجيا المعلومات
-                </h4>
-              </div>
-              <div class="allMajors">
-                <div class="t-major">
-                  <a href="#">تطبيقات الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">تطبيقات الاندرويد</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">برمجة مواقع الويب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">هندسة البرمجيات والحاسوب</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">علم شبكات الانترنت</a>
-                </div>
-                <div class="t-major">
-                  <a href="#">تطوير برامج سطح المكتب</a>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-          
+          @endforeach
         </div>
       </div>
       </div>
@@ -303,7 +126,7 @@
             <a href="#">
               <span class="major">تطبيقات الويب</span>
             </a>
-   
+
           </div>
         </div>
         <hr />

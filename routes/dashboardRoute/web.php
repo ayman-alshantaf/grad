@@ -46,7 +46,7 @@ Route::group(
     Route::post('updateCategory/{id}', 'CategoriesController@update')->name('dashboard.updateCategory');
     Route::post('deleteCategory/{id}', 'CategoriesController@destroy')->name('dashboard.deleteCategory');
 
-    //Routes Categories
+    //Routes majors
     Route::get('majors', 'MajorsController@index')->name('dashboard.major');
     Route::post('addMajor', 'MajorsController@create')->name('dashboard.addMajor');
     Route::post('updateMajor/{id}', 'MajorsController@update')->name('dashboard.updateMajor');

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\publicControllers;
 
 use App\Http\Controllers\Controller;
+use App\models\categorie;
+use App\models\major;
 use Illuminate\Http\Request;
 
 class majorsController extends Controller
@@ -14,72 +16,50 @@ class majorsController extends Controller
      */
     public function index()
     {
-        return view('publicPages.majors');
+        $category = categorie::all();
+        $majors = major::all();
+        return view('publicPages.majors' , compact('category' ,'majors'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+//    /*
+//     * Show the form for creating a new resource.
+//     */
+//    public function create()
+//    {
+//        //
+//    }
+//    /*
+//     * Store a newly created resource in storage.
+//     */
+//    public function store(Request $request)
+//    {
+//        //
+//    }
+//    /*
+//     * Display the specified resource.
+//     */
+//    public function show($id)
+//    {
+//        //
+//    }
+//    /*
+//     * Show the form for editing the specified resource.
+//     */
+//    public function edit($id)
+//    {
+//        //
+//    }
+//    /*
+//     * Update the specified resource in storage.
+//     */
+//    public function update(Request $request, $id)
+//    {
+//        //
+//    }
+//    /*
+//     * Remove the specified resource from storage.
+//     */
+//    public function destroy($id)
+//    {
+//        //
+//    }
 }

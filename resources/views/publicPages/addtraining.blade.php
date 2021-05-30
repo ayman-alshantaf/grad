@@ -52,7 +52,20 @@
                     required
                     minlength="30"
                   ></textarea>
-                  <span>ادخل وصف التدريب بشكل كامل وبالتفصيل وقم بادخال الملاحظات ان وجدت.</span>
+                  <span>ادخل وصف التدريب بشكل كامل وبالتفصيل .</span>
+
+                </div>
+                <div class="content-input">
+                  <label>مهارات المطلوبة من المتدرب</label>
+                  <textarea
+                          class="form-control"
+                          rows="6"
+                          placeholder="ادخل المهارات بشكل دقيق "
+                          name="skills"
+                          required
+                          minlength="30"
+                  ></textarea>
+                  <span>ادخل وصف المهارات بشكل كامل وبالتفصيل وقم بادخال الملاحظات ان وجدت.</span>
 
                 </div>
                 <div class="content-input">
@@ -86,13 +99,41 @@
                             />
                     </div>
                     <div class="col-md">
-                      <label>المكان</label>
-                      <select class="form-control" name="governorate_id">
-                        <option disabled selected value="">اختر مكان التدريب</option>
-                      @foreach($governorate as $governorate_post)
-                          <option value="{{$governorate_post->id}}">{{$governorate_post->name}}</option>
-                        @endforeach
-                      </select>
+                      <label>مدة التدريب</label>
+                      <div class="input-group">
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="training_time"
+                                placeholder="مثلا: 15 يوم / أو 3 شهور"
+                        />
+                    </div>
+                  </div>
+                    <div class="content-input">
+                      <div class="row">
+                        <div class="col-md">
+                          <label>المكان</label>
+                          <select  class="form-control" name="governorate_id" required>
+                            <option selected disabled value="">أختر المحافظة</option>
+                            @foreach($governorate as $governorate_post)
+                              <option value="{{$governorate_post->id}}">{{$governorate_post->name}}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                        <div class="col-md">
+                          <label>تفاصيل المكان</label>
+                          <div class="input-group">
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    name="desc_place"
+                                    placeholder="ادخل تفاصيل التدريب بشكل دقيق"
+                            />
+                            <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>

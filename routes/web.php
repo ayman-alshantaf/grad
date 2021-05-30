@@ -18,20 +18,26 @@ Auth::routes(['verify' => true]);
 Route::get('/', 'HomeController@index')->name('home')->middleware('verified');
 Route::group(
     [
-        'middleware' => [ "auth" , "web"],
+        'middleware' => ["web"],
         'namespace'=>'publicControllers'
     ], function () {
-       /*add Post*/
-    Route::get('getPagePost', 'AddPostController@index')->name('addPost');
+
+    /*get Post*/
+    Route::get('getPost', 'postsController@index')->name('getPost');
+    Route::get('descriptionPost/{id}', 'postsController@descriptionPost')->name('descriptionPost');
+    Route::get('specificMajor/{id}', 'postsController@specificMajor')->name('specificMajor');
+//    Route::get('/findNameMajor', 'AddPostController@findNameMajor');
+
+    /*add Post*/
+    Route::get('addPost', 'AddPostController@index')->name('addPost');
     Route::get('/findNameMajor', 'AddPostController@findNameMajor');
     Route::post('addPost', 'AddPostController@create')->name('addedPost');
-//    Route::post('updatePost/{id}', 'AddPostController@update')->name('updatePost');
-//    Route::post('deletePost/{id}', 'AddPostController@destroy')->name('deletePost');
 
     /*get category and major*/
-    Route::get('majorsController', 'majorsController@index')->name('majorsController');
-    Route::get('/findNameMajor', 'AddPostController@findNameMajor');
-    Route::post('addPost', 'AddPostController@create')->name('addedPost');
+    Route::get('majors', 'majorsController@index')->name('majorsController');
+
+    /*add and get speech*/
+    Route::post('addSpeech', 'speechController@create')->name('addSpeech');
 
 });
 

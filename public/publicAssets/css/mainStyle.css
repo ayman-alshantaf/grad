@@ -1539,6 +1539,8 @@ line-height: 2em;
   word-wrap: break-word;
   width: 100%;
   line-height: 1.7em;
+  max-height: 96px;
+  overflow: hidden;
 }
 .page-findTraining .section-findTraining  .training-new .training .description-training .content-description p.text-desc-training{
   padding-top: 10px;
@@ -1956,6 +1958,7 @@ padding: 0;
 .page-profile-company .description-info .all-training .my-training .training .content-description{
   padding-right: 22px;
   padding-top: 7px;
+
 }
 
 .page-profile-company .description-info .all-training .my-training .training .content-description p{

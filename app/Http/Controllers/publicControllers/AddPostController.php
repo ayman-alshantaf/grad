@@ -38,7 +38,11 @@ class AddPostController extends Controller
             'category_id'=>$request->category_id,
             'major_id'=>$request->major_id,
             'final_date'=>$request->final_date,
-            'governorate_id'=>$request->governorate_id
+            'governorate_id'=>$request->governorate_id,
+            'training_time'=>$request->training_time,
+            'skills'=>$request->skills,
+            'desc_place'=>$request->desc_place,
+            'user_id'=>$request->user_id
         ]);
         if ($addPost){
             toastr()->success('تم اضافة فرصة التدريب بنجاح');
