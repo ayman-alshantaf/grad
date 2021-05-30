@@ -1,11 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 
 Route::group(
     [
-        'middleware' => [ 'web',"isadmin"],
+        'middleware' => [ 'web',"isadmin"  ],
         'prefix'=>'dashboard',
         'name'=>'dashboard.'
     ], function () {

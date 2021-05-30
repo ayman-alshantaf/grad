@@ -9,7 +9,7 @@
 @endsection
 {{--start content--}}
 @section('content')
-    <!-- page majors -->
+    <!-- page majorsController -->
     <div class="page-majors">
       <div class="header-all-page ">
         <div class="overly-all-page "></div>
@@ -53,14 +53,14 @@
                 </select>
               </form>
             </div>
-            <div class="col-sm hideOrShowAll-majors">
+            <div class="col-sm hideOrShowAll-majorsController">
               <form>
                 <label>الية عرض التخصصات</label>
                 <select class="form-control">
-                  <option class="showAll-majors">
+                  <option class="showAll-majorsController">
                     اظهار جميع التخصصات تحت كل كلية
                   </option>
-                  <option class="hideAll-majors">
+                  <option class="hideAll-majorsController">
                     اخفاء جميع التخصصات تحت كل كلية
                   </option>
                 </select>

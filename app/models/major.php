@@ -12,4 +12,8 @@ class major extends Model
     public function m_categories(){
         return $this->belongsTo(categorie::class , 'category_id' , 'id');
     }
+    public function postMajor(){
+        return $this->hasMany(post::class, 'category_id' , 'id');
+    }
+
 }

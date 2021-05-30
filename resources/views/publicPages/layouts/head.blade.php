@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <title>@yield('title')</title>
@@ -11,7 +11,9 @@
           rel="stylesheet"
   />
   <link rel="stylesheet" href="{{URL::asset('publicAssets/css/slick.css')}}" />
+  @toastr_css
   <link href="{{URL::asset('publicAssets/css/mainStyle.css')}}" rel="stylesheet" />
+
 </head>
 <body>
 @yield('navbar')

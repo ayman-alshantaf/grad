@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -13,14 +14,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
-
+Auth::routes(['verify' => true]);
+Route::get('/', 'HomeController@index')->name('home')->middleware('verified');
 Route::group(
     [
-        'middleware' => [ "auth"]
+        'middleware' => [ "auth" , "web"],
+        'namespace'=>'publicControllers'
     ], function () {
+       /*add Post*/
+    Route::get('getPagePost', 'AddPostController@index')->name('addPost');
+    Route::get('/findNameMajor', 'AddPostController@findNameMajor');
+    Route::post('addPost', 'AddPostController@create')->name('addedPost');
+//    Route::post('updatePost/{id}', 'AddPostController@update')->name('updatePost');
+//    Route::post('deletePost/{id}', 'AddPostController@destroy')->name('deletePost');
 
-       Route::get('/', 'HomeController@index')->name('home');
+    /*get category and major*/
+    Route::get('majorsController', 'majorsController@index')->name('majorsController');
+    Route::get('/findNameMajor', 'AddPostController@findNameMajor');
+    Route::post('addPost', 'AddPostController@create')->name('addedPost');
 
 });
 

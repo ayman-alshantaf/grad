@@ -15,8 +15,7 @@
             ></span>
     </button>
     <a class="navbar-brand" href="index.blade.php">
-      <a class="navbar-brand" href="index.html"
-      ><h1>فرص<span style="color: #fdbf13">تنا</span></h1></a
+      <a class="navbar-brand" href="index.html"><h1>فرص<span style="color: #fdbf13">تنا</span></h1></a
     </a>
     <div class="logIn login-lg-hide">
       <a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> دخول</a>
@@ -27,11 +26,18 @@
         <li class="nav-item">
           <a class="nav-link" href="findTraining.blade.php">فرص التدريب</a>
         </li>
+        @guest
+
+        @else
+          @if(Auth::user()->is_company == 1)
+          <li class="nav-item">
+            <a class="nav-link" href="{{route("addPost")}}">اضافة تدريب</a>
+          </li>
+          @endif
+        @endguest
+
         <li class="nav-item">
-          <a class="nav-link" href="addtraining.blade.php">اضافة تدريب</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="majors.blade.php">التخصصات</a>
+          <a class="nav-link" href="{{route('majorsController')}}">التخصصات</a>
         </li>
 
         <li class="nav-item">
@@ -40,8 +46,38 @@
       </ul>
     </div>
     <div class="logIn login-md-hide">
+      @guest
       <a href="{{route('login')}}"><i class="fa fa-sign-in"></i> دخول</a>
-      <a href="{{route('register')}}"><i class="fa fa-user-plus"></i> تسجيل</a>
+        @if (Route::has('register'))
+        <a href="{{route('register')}}"><i class="fa fa-user-plus"></i> تسجيل</a>
+        @endif
+      @else
+
+{{--        <div class="dropdown">--}}
+{{--          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--            {{ Auth::user()->name }}--}}
+{{--          </button>--}}
+{{--          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
+{{--            <a class="dropdown-item" href="{{ route('logout') }}"--}}
+{{--               onclick="event.preventDefault();document.getElementById('logout-form').submit();">تسجيل خروج</a>--}}
+{{--            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
+{{--              @csrf--}}
+{{--            </form>--}}
+{{--          </div>--}}
+{{--        </div>--}}
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ Auth::user()->name }}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();document.getElementById('logout-form').submit();" style="color: black">تسجيل خروج</a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
+          </ul>
+        </div>
+      @endguest
     </div>
   </div>
 </nav>

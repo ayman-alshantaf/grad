@@ -9,22 +9,14 @@ use Illuminate\Http\Request;
 
 class levels extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /* Display a listing of the resource.*/
     public function index()
     {
         $levels = level::all();
         return view("dashboardPage.levels" , compact('levels'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /* Show the form for creating a new resource.*/
     public function create(levelsValidation $request)
     {
         $validated = $request->validated();
@@ -38,56 +30,8 @@ class levels extends Controller
             toastr()->error('An error has occurred please try again later.');
             return redirect()->route('dashboard.level');
         }
-
-
-//        $validated = $request->validated();
-//        $levels = new level();
-//        $levels->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
-//        $doneAdd = $levels->save()
-//;
-
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /*Update the specified resource in storage.*/
     public function update(levelsValidation $request , $id)
     {
         $validated = $request->validated();
@@ -107,12 +51,7 @@ class levels extends Controller
         $dashboardLevels = level::all();
         return view("dashboardPage.dashboard" , compact('dashboardLevels'));
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /*Remove the specified resource from storage.*/
     public function destroy($id)
     {
         $level = level::find($id);

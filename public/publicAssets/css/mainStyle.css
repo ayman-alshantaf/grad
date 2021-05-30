@@ -11,7 +11,12 @@
   padding: 0 ;
   box-sizing: border-box;
 }
-
+#toast-container{
+  margin-top: 80px !important;
+}
+#toast-container button{
+   background-color: transparent !important;
+ }
 body {
   direction: rtl;
   font-family: "Cairo", sans-serif;
@@ -652,7 +657,7 @@ nav button.navbar-icons:focus{
   transform: scale(1.05);
 }
 
-/*section majors*/
+/*section majorsController*/
 .section-major {
   padding-top: 70px;
 }
@@ -1257,8 +1262,8 @@ line-height: 2em;
   }
 }
 
-/*************** page majors *********/
-/*section-majors-header*/
+/*************** page majorsController *********/
+/*section-majorsController-header*/
 
 .page-majors .section-majors-header{
   height: 200px;

@@ -277,7 +277,7 @@
       </div>
     </div>
 
-    <!-- section majors -->
+    <!-- section majorsController -->
     <div class="section-major">
       <div class="container-fluid">
         <h3>أهم التخصصات</h3>

@@ -22,15 +22,25 @@
       </div>
       <div class="container">
             <div class="form-addPost">
-              <form>
+              <form method="post" action="{{route('addedPost')}}">
+                @csrf
                 <div class="content-input">
                   <label>عنوان التدريب</label>
                   <input
                     type="text"
                     class="form-control"
+                    name="title"
                     placeholder="ادخل عنوان التدريب"
+                    required
+                    minlength="3"
+                    maxlength="50"
                   />
+                  <div class="invalid-feedback">
+                    Please select a valid state.
+                  </div>
                   <span>ادخل العنوان موجز يصف التدريب بشكل دقيق وبطريقة يفهمها المتدرب.</span>
+
+
                 </div>
                 <div class="content-input">
                   <label>الوصف</label>
@@ -38,6 +48,9 @@
                     class="form-control"
                     rows="8"
                     placeholder="ادخل وصف التدريب "
+                    name="description"
+                    required
+                    minlength="30"
                   ></textarea>
                   <span>ادخل وصف التدريب بشكل كامل وبالتفصيل وقم بادخال الملاحظات ان وجدت.</span>
 
@@ -46,24 +59,17 @@
                   <div class="row">
                     <div class="col-md">
                       <label>الكلية</label>
-                      <select class="form-control">
-                        <option>تكنلوجيا المعلومات</option>
-                        <option>تكنلوجيا المعلومات</option>
-                        <option>تكنلوجيا المعلومات</option>
-                        <option>تكنلوجيا المعلومات</option>
-                        <option>تكنلوجيا المعلومات</option>
-                        <option>تكنلوجيا المعلومات</option>
-                        <option>تكنلوجيا المعلومات</option>
+                      <select  class="form-control category" name="category_id" required>
+                        <option selected disabled value="">أختر المجال</option>
+                      @foreach($category as $category_post)
+                        <option value="{{$category_post->id}}">{{$category_post->name}}</option>
+                        @endforeach
                       </select>
                     </div>
                     <div class="col-md">
                       <label>التخصص</label>
-                      <select class="form-control">
-                        <option>وسائط متعددة</option>
-                        <option>وسائط متعددة</option>
-                        <option>وسائط متعددة</option>
-                        <option>وسائط متعددة</option>
-                        <option>وسائط متعددة</option>
+                      <select class="form-control majors" name="major_id">
+                        <option value=" ">اختر المجال ثم التخصص</option>
                       </select>
                     </div>
                   </div>
@@ -75,36 +81,22 @@
                             <input
                               type="date"
                               class="form-control"
+                              name="final_date"
+                              required
                             />
-                      
                     </div>
                     <div class="col-md">
-                      <label>مدة التدريب</label>
-                      <div class="input-group">
-                      <input
-                        type="number"
-                        class="form-control"
-                      />
-                      <select class="input-group-text" style="background-color: white;border-radius: 4px 0 0px 4px; padding: 0 10px;outline: none;">
-                          <option>يوم</option>
-                          <option>شهر</option>
-                          <option>سنة</option>
-
+                      <label>المكان</label>
+                      <select class="form-control" name="governorate_id">
+                        <option disabled selected value="">اختر مكان التدريب</option>
+                      @foreach($governorate as $governorate_post)
+                          <option value="{{$governorate_post->id}}">{{$governorate_post->name}}</option>
+                        @endforeach
                       </select>
-                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="content-input">
-                  <label>المكان</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="تحديد مكان التدريب/المحافظة"
-                  />
-                  <span>حدد مكان التدريب بشكل دقيق</span>
-                </div>
-                <div class="content-input button">
+                <div class="content-input button" style="margin-bottom: 30px;margin-top: 15px">
                     <button>نشر التدريب</button>
                 </div>
               </form>
@@ -119,4 +111,37 @@
 {{--start script footer--}}
 @section('footerScript')
   @include('publicPages.layouts.footerScript')
+  <script>
+
+
+    $(document).ready(function (){
+        $(".category").on('change' , function (){
+           let cat_id=$(this).val();
+           let majors = $('.majors');
+           let appendMajor = '';
+          $.ajax({
+              type: 'get',
+              url:'{{URL::to('findNameMajor')}}',
+              data:{'id':cat_id},
+              success:function (data){
+                  let dataLength = data.length;
+                  if (dataLength >= 1){
+                      for (let i = 0; i < data.length;i++){
+                          appendMajor+='<option value="'+ data[i].id +'"> '+ data[i].name +'</option>';
+                      }
+                  }else {
+                      appendMajor+='<option  value=" ">لا يوجد تخصصات متاحة لهذا المجال</option>';
+                  }
+                  majors.html(" ")
+                  majors.append(appendMajor);
+              },
+              error:function (){
+              }
+          });
+        });
+
+    });
+
+
+  </script>
 @endsection

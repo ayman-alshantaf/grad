@@ -41,8 +41,8 @@ $(document).ready(function () {
     });
   }
 
-  /*section slider majors page*/
-  $(".container-slider-majors").slick({
+  /*section slider majorsController page*/
+  $(".container-slider-majorsController").slick({
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
@@ -127,8 +127,8 @@ $(document).ready(function () {
       });
   }
 
-  /**************** majors ******/
-  $(".page-majors .title-college h4").on("click", function () {
+  /**************** majorsController ******/
+  $(".page-majorsController .title-college h4").on("click", function () {
     $(this).parent().siblings().slideToggle(400);
     $(this).find("i").toggleClass("toggleCl");
     if ($(this).find("i").hasClass("toggleCl")) {
@@ -140,20 +140,20 @@ $(document).ready(function () {
     }
   });
 
-  $(".page-majors .hideOrShowAll-majors select ").change(function () {
-    if ($(this).find("option:selected").hasClass("showAll-majors")) {
-      $(".page-majors .allMajors").slideDown(400);
-      $(".page-majors .title-college h4 i").addClass("toggleCl");
+  $(".page-majorsController .hideOrShowAll-majorsController select ").change(function () {
+    if ($(this).find("option:selected").hasClass("showAll-majorsController")) {
+      $(".page-majorsController .allMajors").slideDown(400);
+      $(".page-majorsController .title-college h4 i").addClass("toggleCl");
     } else {
-      $(".page-majors .allMajors").slideUp(400);
-      $(".page-majors .title-college h4 i").removeClass("toggleCl");
+      $(".page-majorsController .allMajors").slideUp(400);
+      $(".page-majorsController .title-college h4 i").removeClass("toggleCl");
     }
-    if ($(".page-majors .title-college h4 i").hasClass("toggleCl")) {
-      $(".page-majors .title-college h4 i").removeClass("fa fa-minus");
-      $(".page-majors .title-college h4 i").addClass("fa fa-chevron-down");
+    if ($(".page-majorsController .title-college h4 i").hasClass("toggleCl")) {
+      $(".page-majorsController .title-college h4 i").removeClass("fa fa-minus");
+      $(".page-majorsController .title-college h4 i").addClass("fa fa-chevron-down");
     } else {
-      $(".page-majors .title-college h4 i").removeClass("fa fa-chevron-down");
-      $(".page-majors .title-college h4 i").addClass("fa fa-minus");
+      $(".page-majorsController .title-college h4 i").removeClass("fa fa-chevron-down");
+      $(".page-majorsController .title-college h4 i").addClass("fa fa-minus");
     }
   });
 

@@ -12,4 +12,7 @@ class categorie extends Model
     public function m_categories(){
         return $this->hasMany(major::class, 'category_id' , 'id');
     }
+    public function postCategory(){
+        return $this->hasMany(post::class, 'category_id' , 'id');
+    }
 }

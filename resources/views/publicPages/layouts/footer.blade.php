@@ -3,45 +3,6 @@
   <div class="overly-image-footer"></div>
   <div class="overly-footer"></div>
   <div class="container">
-{{--    <div class="form-connectUs">--}}
-{{--      <h2>اتصل بنا</h2>--}}
-{{--      <form>--}}
-{{--        <div class="row">--}}
-{{--          <div class="col-md-6">--}}
-{{--            <input--}}
-{{--                    type="text"--}}
-{{--                    class="form-control"--}}
-{{--                    placeholder="ادخل الاسم الاول"--}}
-{{--                    required--}}
-{{--            />--}}
-{{--            <input--}}
-{{--                    type="text"--}}
-{{--                    class="form-control"--}}
-{{--                    placeholder="ادخل الاسم الثاني"--}}
-{{--                    required--}}
-{{--            />--}}
-{{--            <input--}}
-{{--                    type="text"--}}
-{{--                    class="form-control"--}}
-{{--                    placeholder="ادخل الايميل"--}}
-{{--                    required--}}
-{{--            />--}}
-{{--          </div>--}}
-{{--          <div class="col-md-6">--}}
-{{--                <textarea--}}
-{{--                        name=""--}}
-{{--                        id=""--}}
-{{--                        cols="40"--}}
-{{--                        class="form-control"--}}
-{{--                        rows="4"--}}
-{{--                        required--}}
-{{--                        placeholder="ادخل الرسالة"--}}
-{{--                ></textarea>--}}
-{{--            <input type="submit" class="form-control" value="ارسال" />--}}
-{{--          </div>--}}
-{{--        </div>--}}
-{{--      </form>--}}
-{{--    </div>--}}
     <div class="footer-contentText">
       <div class="row">
         <div class="col-md-4 col-sm-4">
@@ -102,5 +63,12 @@
 
     </div>
 
+  </div>
+</div>
+<div class="footer-qq" >
+  <div class="container">
+    <div class="Peculiarity ">
+      <p style="margin-bottom: 0;">فرصتكم@2021</p>
+    </div>
   </div>
 </div>
