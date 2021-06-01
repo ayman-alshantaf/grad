@@ -3,14 +3,10 @@
 namespace App\Http\Controllers\publicControllers;
 
 use App\Http\Controllers\Controller;
-use App\models\categorie;
-use App\models\governorate;
-use App\models\major;
-use App\models\post;
-use App\models\speech;
+use App\User;
 use Illuminate\Http\Request;
 
-class postsController extends Controller
+class indexController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,23 +15,17 @@ class postsController extends Controller
      */
     public function index()
     {
-        $categorie = categorie::all();
-        $governorates = governorate::all();
-        $allPosts = post::all();
-        return view('publicPages.findTraining' , compact('allPosts','categorie','governorates'));
-    }
-    public function descriptionPost($id)
-    {
-
-      $descriptionPost = post::find($id);
-      $similarPosts = post::where('category_id' , $descriptionPost->category_id)->take(5)->get();
-      return view('publicPages.desctraining' , compact('descriptionPost' , 'similarPosts'));
+        return view('publicPages.index' );
     }
 
-    public function specificMajor($id)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        $allPosts = post::where('major_id' , $id)->get();
-        return view('publicPages.findTraining' , compact('allPosts'));
+        //
     }
 
     /**

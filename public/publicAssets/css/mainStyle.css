@@ -45,6 +45,7 @@ button:hover{
 
 /* ********* index ********** */
 /*navbar*/
+
 .navbar {
   position: fixed;
   width: 100%;
@@ -291,6 +292,9 @@ nav button.navbar-icons:focus{
     width: 95%;
   }
 }
+/***********************/
+
+/***********************/
 /*section about us*/
 .section-aboutUs {
   padding-top: 70px;

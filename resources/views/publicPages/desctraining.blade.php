@@ -78,8 +78,11 @@
                   <a href="{{route('login')}}">تسجيل دخول</a>
                 </div>
               @else
+                @if(Auth::user()->email_verified_at === null)
+                  <div class="alert alert-warning">يرجى التحقق من البريد الالكتروني الخاص بك </div>
+                @else
               <h5>تقديم طلب للتدريب</h5>
-              <form method="post" action="{{route('addSpeech')}}">
+              <form method="post" action="{{route('addSpeech')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                   <label>خطاب المتدرب</label>
@@ -101,6 +104,7 @@
                   </button>
                 </div>
               </form>
+                @endif
               @endguest
             </div>
 

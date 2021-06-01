@@ -1,7 +1,8 @@
 @extends('publicPages.layouts.head')
 {{--start head--}}
 @section('title')
-  الصفحة الشخصية للطالب
+
+  {{$userProfile->name}}
 @endsection
 {{--start body and navbar--}}
 @section('navbar')
@@ -14,20 +15,38 @@
 
   <div class="page-profile-company">
     <div class="container">
+      @if(Auth::user()->id === $userProfile->id)
+
+      @if($userProfile->completeProfile == 0 )
+        <div class="alert alert-warning">
+          يرجى منك أكمال ملفك الشخصي وادخال جميع البيانات المطلوبة بشكل دقيق.<a href="{{route('editProfileStudent' ,  $userProfile->id)}}">اكمل الملف الشخصي</a>
+        </div>
+      @else
+        @endif
+      @else
+      @endif
+
       <div class="section-main-profile">
         <div class="profile-header-edit">
-          <h5>ملفي الشخصي</h5>
+          <h5>الملف الشخصي </h5>
+          @if(Auth::user()->id === $userProfile->id)
           <div class="edit-profile">
-            <a href="#">
+            <a href="{{route('editProfileStudent' , $userProfile->id)}}">
               <button>تعديل الملف الشخصي</button>
             </a>
           </div>
+          @else
+          @endif
         </div>
         <div class="row">
           <div class="col-lg-3 img-communication-profile">
             <div class="flex-profile">
               <div class="img-profile">
-                <img src="image/header/colleges/10.jpg" alt="" />
+                @if($userProfile->image == null)
+                  <img src="{{URL::asset('image/student/null.png')}}" alt="" />
+                @else
+                  <img src="{{URL::asset('image/student') .'/'. $userProfile->image}}" alt="" />
+                @endif
               </div>
               <div class="Communication-account">
                 <a href="#">
@@ -54,36 +73,55 @@
                 <span>الاسم :</span>
               </div>
               <div class="col-sm">
-                <span>أيمن محمود الشنتف</span>
+                <span>  {{$userProfile->name}}</span>
               </div>
             </div>
             <hr />
             <div class="row">
               <div class="col-sm-2">
-                <span>الكلية :</span>
+                <span>المجال :</span>
               </div>
               <div class="col-sm">
-                <span>تكنلولوجيا معلومات </span>
+                @if($userProfile->category_id == null)
+                  <small class="text-danger">_______</small>
+                @else
+                  <span>
+                    {{$userProfile->userCategory->name}}
+                    @if($userProfile->major_id == null)
+                    @else
+                      / {{$userProfile->userMajor->name}}
+                    @endif
+                  </span>
+                @endif
               </div>
             </div>
             <hr />
             <div class="row">
               <div class="col-sm-2">
-                <span>التخصص :</span>
+                <span>نبذة  مهاراتك :</span>
               </div>
               <div class="col-sm">
-                <span>وسطائط متعددة</span>
+                <span>
+                  @if($userProfile->skills == null)
+                    <small class="text-danger">_______</small>
+                  @else
+                    {{$userProfile->skills}}
+                  @endif
+
+                </span>
               </div>
             </div>
             <hr />
             <div class="row">
               <div class="col-sm-2">
-                <span>معرض اعمالي :</span>
+                <span>الهاتف :</span>
               </div>
               <div class="col-sm">
-                <a href="#">
-                  <span>https://www.web.com</span>
-                </a>
+                    @if($userProfile->mobile == null)
+                      <small class="text-danger">_______</small>
+                    @else
+                      {{$userProfile->mobile}}
+                    @endif
               </div>
             </div>
             <hr />
@@ -97,9 +135,12 @@
               <div class="about-compainy select-show-info activity" data-info-profil="aboutUs">
                 <p>عن المتدرب</p>
               </div>
+              @if(Auth::user()->id === $userProfile->id)
               <div class="all-postMy select-show-info" data-info-profil="all-training">
                 <p> طلبات التدريب</p>
               </div>
+              @else
+              @endif
               <div class="all-postMy-request select-show-info" data-info-profil="all-request-post">
                 <!-- <p>طلبات الطلاب المتدربين </p> -->
               </div>
@@ -110,6 +151,15 @@
               <div class="aboutUs">
                 <h5>نبذة عن المتدرب</h5>
                 <p>
+                  @if(Auth::user()->id === $userProfile->id)
+
+                  @if($userProfile->about_us == null)
+                    <small class="text-danger"> يرجى اكمال ملفك الشخصي وكتابة النبذة بطريقة جميلة وبشكل دقيق <a href="{{route('editProfileStudent' ,  $userProfile->id)}}">اكمل الملف الشخصي</a></small>
+                  @else
+                    {{$userProfile->about_us}}
+                  @endif
+                  @else
+                  @endif
                   في طور بناء موقع الكتروني وارغب ببناء متطلبات تحسين الظهور
                   على محركات البحث منذ البداية ارغب بالتعامل مع خبير في هذا
                   المجال وتقديم الاستشارة المطلوبة في طور بناء موقع الكتروني
@@ -138,11 +188,11 @@
                   وتقديم الاستشارة المطلوبة
                 </p>
               </div>
-
+              @if(Auth::user()->id === $userProfile->id)
               <div class="all-training ">
                 <div class="my-training">
                   <div class="header-my-training">
-                    <h5> قمت بتقديم على<span>(15) </span>تدريب</h5>
+                    <h5> قمت بتقديم على<span> ({{count($postUser)}}) </span>تدريب</h5>
                     <div class="way-show-training">
                       <div class="form-check">
                         <input class="form-check-input showAll-training" type="radio" name="flexRadioDefault" checked/>
@@ -159,26 +209,28 @@
                     </div>
                   </div>
                   <hr />
+                  @if(count($postUser) > 0)
+                  @foreach($postUser as $post)
                   <div class="training">
                     <div class="description-training">
                       <div class="title-desc-training">
                         <div class="title-options">
                           <h6>
                             <i class="fa fa-minus" aria-hidden="true"></i>
-                            تطوير مشروع ويب
+                            {{$post->speechPost->title}}
                           </h6>
                         </div>
 
                         <div class="time-counter-training">
-                          <span><i class="fa fa-building-o"></i>شركة ويب سايت</span>
-                          <span><i class="fa fa-clock-o"></i>منذ 4 دقائق</span>
+                          <span><i class="fa fa-building-o"></i>{{$post->speechPost->postUser->name}}</span>
+                          <span><i class="fa fa-clock-o"></i>{{$post->created_at}}</span>
                         </div>
                       </div>
                       <div class="all-training-profile training-students">
                         <div class="content-description">
                           <p class="text-desc-training">
-                            انا أيمن مطور ويب...لدى القدرة الكافية وقوة الملاحظة الكافية لادخال البيانات والفواتير
-                            المالية بكل دقة وبقوة ملاحظة عالية متمكن جدا في استخدام الحاسوب الالي حيث ان من ضمن مج...                          </p>
+                              {{$post->speech}}
+                          </p>
                         </div>   
                       </div>
                     </div>
@@ -187,470 +239,15 @@
                     </div>
                     <hr />
                   </div>
-                  <div class="training">
-                    <div class="description-training">
-                      <div class="title-desc-training">
-                        <div class="title-options">
-                          <h6>
-                            <i class="fa fa-minus" aria-hidden="true"></i>
-                            تطوير مشروع ويب
-                          </h6>
-                        </div>
-
-                        <div class="time-counter-training">
-                          <span><i class="fa fa-building-o"></i>شركة ويب سايت</span>
-                          <span><i class="fa fa-clock-o"></i>منذ 4 دقائق</span>
-                        </div>
-                      </div>
-                      <div class="all-training-profile training-students">
-                        <div class="content-description">
-                          <p class="text-desc-training">
-                            انا أيمن مطور ويب...لدى القدرة الكافية وقوة الملاحظة الكافية لادخال البيانات والفواتير
-                            المالية بكل دقة وبقوة ملاحظة عالية متمكن جدا في استخدام الحاسوب الالي حيث ان من ضمن مج...                          </p>
-                        </div>   
-                      </div>
-                    </div>
-                    <div class="status-trainin">
-                      <span class=" btn-primary">تم الاستلام</span>
-                    </div>
-                    <hr />
-                  </div>
-                  <div class="training">
-                    <div class="description-training">
-                      <div class="title-desc-training">
-                        <div class="title-options">
-                          <h6>
-                            <i class="fa fa-minus" aria-hidden="true"></i>
-                            تطوير مشروع ويب
-                          </h6>
-                        </div>
-
-                        <div class="time-counter-training">
-                          <span><i class="fa fa-building-o"></i>شركة ويب سايت</span>
-                          <span><i class="fa fa-clock-o"></i>منذ 4 دقائق</span>
-                        </div>
-                      </div>
-                      <div class="all-training-profile training-students">
-                        <div class="content-description">
-                          <p class="text-desc-training">
-                            انا أيمن مطور ويب...لدى القدرة الكافية وقوة الملاحظة الكافية لادخال البيانات والفواتير
-                            المالية بكل دقة وبقوة ملاحظة عالية متمكن جدا في استخدام الحاسوب الالي حيث ان من ضمن مج...                          </p>
-                        </div>   
-                      </div>
-                    </div>
-                    <div class="status-trainin">
-                      <span class=" btn-primary">تم الاستلام</span>
-                    </div>
-                    <hr />
-                  </div>
-                  <div class="training">
-                    <div class="description-training">
-                      <div class="title-desc-training">
-                        <div class="title-options">
-                          <h6>
-                            <i class="fa fa-minus" aria-hidden="true"></i>
-                            تطوير مشروع ويب
-                          </h6>
-                        </div>
-
-                        <div class="time-counter-training">
-                          <span><i class="fa fa-building-o"></i>شركة ويب سايت</span>
-                          <span><i class="fa fa-clock-o"></i>منذ 4 دقائق</span>
-                        </div>
-                      </div>
-                      <div class="all-training-profile training-students">
-                        <div class="content-description">
-                          <p class="text-desc-training">
-                            انا أيمن مطور ويب...لدى القدرة الكافية وقوة الملاحظة الكافية لادخال البيانات والفواتير
-                            المالية بكل دقة وبقوة ملاحظة عالية متمكن جدا في استخدام الحاسوب الالي حيث ان من ضمن مج...                          </p>
-                        </div>   
-                      </div>
-                    </div>
-                    <div class="status-trainin">
-                      <span class=" btn-primary">تم الاستلام</span>
-                    </div>
-                    <hr />
-                  </div>
+                  @endforeach
+                  @else
+                    <div class="alert alert-warning">ما قمت بالتقديم على اي تدريب حتى هذه اللحظة</div>
+                  @endif
                 </div>
               </div>
+            @else
+            @endif
 
-              <!-- <div class="all-request-post">
-                  <div class="header-request">
-                    <h5>طلبات الطلاب المتدربين</h5>
-                    <div class="way-show-request">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input showAll-requests"
-                          type="radio"
-                          name="flexRadioDefault3"
-                        />
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          عرض التفاصيل
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault3"
-                          checked
-                        />
-                        <label class="form-check-label" for="flexRadioDefault2">
-                          عرض موجز
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
-                  <div class="all-request">
-                    <div class="request-training">
-                      <div class="title-training-request">
-                        <h6>
-                          <i class="fa fa-minus" aria-hidden="true"></i>
-                          تطوير مشروع ويب
-                        </h6>
-                        <h6>(12 طلب تدريب) </h6>
-                      </div>
-                      <div class="requests-students">
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <hr style="height: 5px; display: block !important;"/>
-                    <div class="request-training">
-                      <div class="title-training-request">
-                        <h6>
-                          <i class="fa fa-minus" aria-hidden="true"></i>
-                          تطوير مشروع ويب
-                        </h6>
-                        <h6>(12 طلب تدريب) </h6>
-                      </div>
-                      <div class="requests-students">
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="student">
-                          <div class="img-syudent">
-                            <img src="image/header/colleges/8.jfif" alt="" />
-                          </div>
-                          <div class="description-student">
-                            <h6 class="name">
-                              <a href="#"> أيمن محمود الشنتف </a>
-                            </h6>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              كلية تكنلوجيا المعلومات
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              تخصص وسائط متعددة
-                            </span>
-                            <span>
-                              <i class="fa fa-user"></i>
-                              منذ 15 دقيقة
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <hr style="height: 5px; display: block !important;"/>
-                  </div>
-                </div> -->
             </div>
           </div>
         </div>

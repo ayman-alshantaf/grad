@@ -2,6 +2,7 @@
 
 namespace App\models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class major extends Model
@@ -14,6 +15,9 @@ class major extends Model
     }
     public function postMajor(){
         return $this->hasMany(post::class, 'category_id' , 'id');
+    }
+    public function userMajor(){
+        return $this->hasMany(User::class, 'category_id' , 'id');
     }
 
 }

@@ -82,7 +82,7 @@
                     <div class="col-md">
                       <label>التخصص</label>
                       <select class="form-control majors" name="major_id">
-                        <option value=" ">اختر المجال ثم التخصص</option>
+                        <option value="">اختر المجال ثم التخصص</option>
                       </select>
                     </div>
                   </div>

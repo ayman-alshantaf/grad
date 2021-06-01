@@ -2,6 +2,7 @@
 
 namespace App\models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class categorie extends Model
@@ -14,5 +15,8 @@ class categorie extends Model
     }
     public function postCategory(){
         return $this->hasMany(post::class, 'category_id' , 'id');
+    }
+    public function userCategory(){
+        return $this->hasMany(User::class, 'category_id' , 'id');
     }
 }

@@ -30,47 +30,62 @@
           <div class="c-mobile">
             <i class="fa fa-phone" aria-hidden="true"></i>
             <h5>رقم الهاتف</h5>
-            <p>595844507 (790+)</p>
+            @foreach($admin as $admins)
+            <p>{{$admins->mobile}} (790+)</p>
+            @endforeach
           </div>
           <div class="c-email">
             <i class="fa fa-envelope-o" aria-hidden="true"></i>
             <h5>بريد الالكتروني</h5>
-            <p>forsatcom@gmail.com</p>
+            @foreach($admin as $admins)
+              <p>{{$admins->email}}</p>
+            @endforeach
           </div>
 
           <div class="c-mobile">
-            <i class="fa fa-phone" aria-hidden="true"></i>
-            <h5>رقم الهاتف</h5>
-            <p>595844507 (790+)</p>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <h5>المحافظة</h5>
+            @foreach($admin as $admins)
+
+              @if($admins->governorate_id == null)
+                <p class="text-warning">المنطقة غير محددة</p>
+              @else
+                <p>{{$admins->governorate->name}}</p>
+              @endif
+            @endforeach
           </div>
         </div>
         <div class="form-connectUs">
           <h2>اتصل بنا</h2>
-          <form>
+          <form method="post" action="{{route('addContactUs')}}">
+            @csrf
             <div class="row">
               <div class="col-md-6">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="ادخل الاسم الاول"
+                  name="name"
+                  placeholder="ادخل الاسم بالكامل"
                   required
                 />
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="ادخل الاسم الثاني"
-                  required
-                />
-                <input
-                  type="text"
-                  class="form-control"
+                  name="email"
                   placeholder="ادخل الايميل"
                   required
+                />
+                <input
+                        type="number"
+                        class="form-control"
+                        name="mobile"
+                        placeholder="ادخل رقم الهاتف"
+                        required
                 />
               </div>
               <div class="col-md-6">
                 <textarea
-                  name=""
+                  name="speech"
                   id=""
                   cols="40"
                   class="form-control"

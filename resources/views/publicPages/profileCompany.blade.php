@@ -12,20 +12,38 @@
 
 <div class="page-profile-company">
     <div class="container">
-      <div class="section-main-profile">
+        @if(Auth::user()->id === $userProfile->id)
+
+          @if($userProfile->completeProfile == 0 )
+            <div class="alert alert-warning">
+              يرجى منك أكمال ملفك الشخصي وادخال جميع البيانات المطلوبة بشكل دقيق.<a href="{{route('editProfileStudent' ,  $userProfile->id)}}">اكمل الملف الشخصي</a>
+            </div>
+          @else
+          @endif
+        @else
+        @endif
+
+        <div class="section-main-profile">
         <div class="profile-header-edit">
           <h5>الملف الشخصي للشركة</h5>
-          <div class="edit-profile">
-            <a href="#">
-              <button>تعديل الملف الشخصي</button>
-            </a>
-          </div>
+          @if(Auth::user()->id === $userProfile->id)
+            <div class="edit-profile">
+              <a href="{{route('editProfileCompany' , $userProfile->id)}}">
+                <button>تعديل الملف الشخصي</button>
+              </a>
+            </div>
+          @else
+          @endif
         </div>
         <div class="row">
           <div class="col-lg-3 img-communication-profile">
             <div class="flex-profile">
               <div class="img-profile">
-                <img src="image/header/colleges/10.jpg" alt="" />
+                @if($userProfile->image == null)
+                  <img src="{{URL::asset('image/student/null.png')}}" alt="" />
+                @else
+                  <img src="{{URL::asset('image/student') .'/'. $userProfile->image}}" alt="" />
+                @endif
               </div>
               <div class="Communication-account">
                 <a href="#">
@@ -49,39 +67,59 @@
           <div class="col-lg info-main-profile">
             <div class="row">
               <div class="col-sm-2">
-                <span>الاسم :</span>
+                <span>الاسم الشركة:</span>
               </div>
               <div class="col-sm">
-                <span>web.com</span>
+                <span>  {{$userProfile->name}}</span>
               </div>
             </div>
             <hr />
             <div class="row">
               <div class="col-sm-2">
-                <span>التخصص :</span>
+                <span>تخصص الشركة:</span>
               </div>
               <div class="col-sm">
-                <span>تطوير التطبيقات وهندسة البرمجيات</span>
+                @if($userProfile->category_id == null)
+                  <small class="text-danger">_______</small>
+                @else
+                  <span>
+                    {{$userProfile->userCategory->name}}
+                    @if($userProfile->major_id == null)
+                    @else
+                      / {{$userProfile->userMajor->name}}
+                    @endif
+                  </span>
+                @endif
               </div>
             </div>
             <hr />
             <div class="row">
               <div class="col-sm-2">
-                <span>المكان :</span>
+                <span>عمل الشركة :</span>
               </div>
               <div class="col-sm">
-                <span>غزة-مقابل كابتل مول</span>
+                <span>
+                  @if($userProfile->skills == null)
+                    <small class="text-danger">_______</small>
+                  @else
+                    {{$userProfile->skills}}
+                  @endif
+                </span>
               </div>
             </div>
             <hr />
             <div class="row">
               <div class="col-sm-2">
-                <span>الموقع :</span>
+                <span>رقم الهاتف  :</span>
               </div>
               <div class="col-sm">
-                <a href="#">
-                  <span>https://www.web.com</span>
-                </a>
+                  <span>
+                   @if($userProfile->mobile == null)
+                      <small class="text-danger">_______</small>
+                    @else
+                      {{$userProfile->mobile}}
+                    @endif
+                  </span>
               </div>
             </div>
             <hr />
@@ -108,39 +146,22 @@
               <div class="aboutUs">
                 <h5>نبذة عن الشركة</h5>
                 <p>
-                  في طور بناء موقع الكتروني وارغب ببناء متطلبات تحسين الظهور
-                  على محركات البحث منذ البداية ارغب بالتعامل مع خبير في هذا
-                  المجال وتقديم الاستشارة المطلوبة في طور بناء موقع الكتروني
-                  وارغب ببناء متطلبات تحسين الظهور على محركات البحث منذ
-                  البداية ارغب بالتعامل مع خبير في هذا المجال وتقديم الاستشارة
-                  المطلوبة في طور بناء موقع الكتروني وارغب ببناء متطلبات تحسين
-                  الظهور على محركات البحث منذ البداية ارغب بالتعامل مع خبير في
-                  هذا المجال وتقديم الاستشارة المطلوبة في طور بناء موقع
-                  الكتروني وارغب ببناء متطلبات تحسين الظهور على محركات البحث
-                  منذ البداية ارغب بالتعامل مع خبير في هذا المجال وتقديم
-                  الاستشارة المطلوبة في طور بناء موقع الكتروني وارغب ببناء
-                  متطلبات تحسين الظهور على محركات البحث منذ البداية ارغب
-                  بالتعامل مع خبير في هذا المجال وتقديم الاستشارة المطلوبة في
-                  طور بناء موقع الكتروني وارغب ببناء متطلبات تحسين الظهور على
-                  محركات البحث منذ البداية ارغب بالتعامل مع خبير في هذا المجال
-                  وتقديم الاستشارة المطلوبة في طور بناء موقع الكتروني وارغب
-                  ببناء متطلبات تحسين الظهور على محركات البحث منذ البداية ارغب
-                  بالتعامل مع خبير في هذا المجال وتقديم الاستشارة المطلوبة في
-                  طور بناء موقع الكتروني وارغب ببناء متطلبات تحسين الظهور على
-                  محركات البحث منذ البداية ارغب بالتعامل مع خبير في هذا المجال
-                  وتقديم الاستشارة المطلوبة في طور بناء موقع الكتروني وارغب
-                  ببناء متطلبات تحسين الظهور على محركات البحث منذ البداية ارغب
-                  بالتعامل مع خبير في هذا المجال وتقديم الاستشارة المطلوبة في
-                  طور بناء موقع الكتروني وارغب ببناء متطلبات تحسين الظهور على
-                  محركات البحث منذ البداية ارغب بالتعامل مع خبير في هذا المجال
-                  وتقديم الاستشارة المطلوبة
+                  @if(Auth::user()->id === $userProfile->id)
+
+                    @if($userProfile->about_us == null)
+                      <small class="text-danger"> يرجى اكمال ملفك الشخصي وكتابة النبذة بطريقة جميلة وبشكل دقيق <a href="{{route('editProfileStudent' ,  $userProfile->id)}}">اكمل الملف الشخصي</a></small>
+                    @else
+                      {{$userProfile->about_us}}
+                    @endif
+                  @else
+                  @endif
                 </p>
               </div>
 
               <div class="all-training">
                 <div class="my-training">
                   <div class="header-my-training">
-                    <h5>قمت بنشر <span>(15) </span>تدريب</h5>
+                    <h5>قمت بنشر <span>({{count($posts)}}) </span>تدريب</h5>
                     <div class="way-show-training">
                       <div class="form-check">
                         <input class="form-check-input showAll-training" type="radio" name="flexRadioDefault" />
@@ -157,282 +178,39 @@
                     </div>
                   </div>
                   <hr />
+                  @foreach($posts as $post)
                   <div class="training">
                     <div class="description-training">
                       <div class="title-desc-training">
                         <div class="title-options">
                           <h6>
-                            <i class="fa fa-minus" aria-hidden="true"></i>تطوير مشروع ويب
+                            <i class="fa fa-minus" aria-hidden="true"></i>
+                            {{$post->title}}
                           </h6>
-                          <i class="fa fa-ellipsis-h show-options" aria-hidden="true"></i>
-                          <ul>
-                            <a href="#">
-                              <li>
-                                <i class="fa fa-eye" aria-hidden="true"></i>عرض
-                              </li>
-                            </a>
-                            <a href="addtraining.blade.php">
-                              <li>
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                تعديل
-                              </li>
-                            </a>
-                            <a href="#">
-                              <li>
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>حذف
-                              </li>
-                            </a>
-                          </ul>
-                        </div>
-
-                        <div class="time-counter-training">
-                          <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                          <span><i class="fa fa-spinner"></i>5 متقدمين</span>
+                          <div>
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            تعديل
+                          </div>
                         </div>
                       </div>
                       <div class="all-training-profile">
-                        <div class="content-description">
+                        <div class="content-description" style="max-height: 60px;overflow: hidden">
                           <p class="text-desc-training">
-                            بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن
-                            الفريق لمساعدة الفريق وتقديم افضل النصائح للمتدرب
-                            لحيث يكون المتدرب قادرا على تنفيذ المهام بقدر
-                            ......
+                              {{$post->description}}
                           </p>
                         </div>
                         <div class="footer-description">
-                          <span><i class="fa fa-user"></i>كلية تكنولوجيا
-                            المعوماتك</span>
-                          <span><i class="fa fa-user"></i>تخصص وسائط متعددة</span>
+                          <span><i class="fa fa-user"></i>
+                            كلية:
+                            {{$post->postCategory->name}}
+                          </span>
                         </div>
                       </div>
                     </div>
                     <hr />
                   </div>
-                  <div class="training">
-                    <div class="description-training">
-                      <div class="title-desc-training">
-                        <div class="title-options">
-                          <h6>
-                            <i class="fa fa-minus" aria-hidden="true"></i>تطوير مشروع ويب
-                          </h6>
-                          <i class="fa fa-ellipsis-h show-options" aria-hidden="true"></i>
-                          <ul>
-                            <li>
-                              <i class="fa fa-eye" aria-hidden="true"></i>عرض
-                            </li>
-                            <li>
-                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                              تعديل
-                            </li>
-                            <li>
-                              <i class="fa fa-trash-o" aria-hidden="true"></i>حذف
-                            </li>
-                          </ul>
-                        </div>
+                  @endforeach
 
-                        <div class="time-counter-training">
-                          <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                          <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                        </div>
-                      </div>
-                      <div class="all-training-profile">
-                        <div class="content-description">
-                          <p class="text-desc-training">
-                            بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن
-                            الفريق لمساعدة الفريق وتقديم افضل النصائح للمتدرب
-                            لحيث يكون المتدرب قادرا على تنفيذ المهام بقدر
-                            ......
-                          </p>
-                        </div>
-                        <div class="footer-description">
-                          <span><i class="fa fa-user"></i>كلية تكنولوجيا
-                            المعوماتك</span>
-                          <span><i class="fa fa-user"></i>تخصص وسائط متعددة</span>
-                        </div>
-                      </div>
-                    </div>
-                    <hr />
-                  </div>
-                  <div class="training">
-                    <div class="description-training">
-                      <div class="title-desc-training">
-                        <div class="title-options">
-                          <h6>
-                            <i class="fa fa-minus" aria-hidden="true"></i>تطوير مشروع ويب
-                          </h6>
-                          <i class="fa fa-ellipsis-h show-options" aria-hidden="true"></i>
-                          <ul>
-                            <li>
-                              <i class="fa fa-eye" aria-hidden="true"></i>عرض
-                            </li>
-                            <li>
-                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                              تعديل
-                            </li>
-                            <li>
-                              <i class="fa fa-trash-o" aria-hidden="true"></i>حذف
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div class="time-counter-training">
-                          <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                          <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                        </div>
-                      </div>
-                      <div class="all-training-profile">
-                        <div class="content-description">
-                          <p class="text-desc-training">
-                            بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن
-                            الفريق لمساعدة الفريق وتقديم افضل النصائح للمتدرب
-                            لحيث يكون المتدرب قادرا على تنفيذ المهام بقدر
-                            ......
-                          </p>
-                        </div>
-                        <div class="footer-description">
-                          <span><i class="fa fa-user"></i>كلية تكنولوجيا
-                            المعوماتك</span>
-                          <span><i class="fa fa-user"></i>تخصص وسائط متعددة</span>
-                        </div>
-                      </div>
-                    </div>
-                    <hr />
-                  </div>
-                  <div class="training">
-                    <div class="description-training">
-                      <div class="title-desc-training">
-                        <div class="title-options">
-                          <h6>
-                            <i class="fa fa-minus" aria-hidden="true"></i>تطوير مشروع ويب
-                          </h6>
-                          <i class="fa fa-ellipsis-h show-options" aria-hidden="true"></i>
-                          <ul>
-                            <li>
-                              <i class="fa fa-eye" aria-hidden="true"></i>عرض
-                            </li>
-                            <li>
-                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                              تعديل
-                            </li>
-                            <li>
-                              <i class="fa fa-trash-o" aria-hidden="true"></i>حذف
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div class="time-counter-training">
-                          <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                          <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                        </div>
-                      </div>
-                      <div class="all-training-profile">
-                        <div class="content-description">
-                          <p class="text-desc-training">
-                            بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن
-                            الفريق لمساعدة الفريق وتقديم افضل النصائح للمتدرب
-                            لحيث يكون المتدرب قادرا على تنفيذ المهام بقدر
-                            ......
-                          </p>
-                        </div>
-                        <div class="footer-description">
-                          <span><i class="fa fa-user"></i>كلية تكنولوجيا
-                            المعوماتك</span>
-                          <span><i class="fa fa-user"></i>تخصص وسائط متعددة</span>
-                        </div>
-                      </div>
-                    </div>
-                    <hr />
-                  </div>
-                  <div class="training">
-                    <div class="description-training">
-                      <div class="title-desc-training">
-                        <div class="title-options">
-                          <h6>
-                            <i class="fa fa-minus" aria-hidden="true"></i>تطوير مشروع ويب
-                          </h6>
-                          <i class="fa fa-ellipsis-h show-options" aria-hidden="true"></i>
-                          <ul>
-                            <li>
-                              <i class="fa fa-eye" aria-hidden="true"></i>عرض
-                            </li>
-                            <li>
-                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                              تعديل
-                            </li>
-                            <li>
-                              <i class="fa fa-trash-o" aria-hidden="true"></i>حذف
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div class="time-counter-training">
-                          <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                          <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                        </div>
-                      </div>
-                      <div class="all-training-profile">
-                        <div class="content-description">
-                          <p class="text-desc-training">
-                            بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن
-                            الفريق لمساعدة الفريق وتقديم افضل النصائح للمتدرب
-                            لحيث يكون المتدرب قادرا على تنفيذ المهام بقدر
-                            ......
-                          </p>
-                        </div>
-                        <div class="footer-description">
-                          <span><i class="fa fa-user"></i>كلية تكنولوجيا
-                            المعوماتك</span>
-                          <span><i class="fa fa-user"></i>تخصص وسائط متعددة</span>
-                        </div>
-                      </div>
-                    </div>
-                    <hr />
-                  </div>
-                  <div class="training">
-                    <div class="description-training">
-                      <div class="title-desc-training">
-                        <div class="title-options">
-                          <h6>
-                            <i class="fa fa-minus" aria-hidden="true"></i>تطوير مشروع ويب
-                          </h6>
-                          <i class="fa fa-ellipsis-h show-options" aria-hidden="true"></i>
-                          <ul>
-                            <li>
-                              <i class="fa fa-eye" aria-hidden="true"></i>عرض
-                            </li>
-                            <li>
-                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                              تعديل
-                            </li>
-                            <li>
-                              <i class="fa fa-trash-o" aria-hidden="true"></i>حذف
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div class="time-counter-training">
-                          <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                          <span><i class="fa fa-spinner"></i>5 متقدمين</span>
-                        </div>
-                      </div>
-                      <div class="all-training-profile">
-                        <div class="content-description">
-                          <p class="text-desc-training">
-                            بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن
-                            الفريق لمساعدة الفريق وتقديم افضل النصائح للمتدرب
-                            لحيث يكون المتدرب قادرا على تنفيذ المهام بقدر
-                            ......
-                          </p>
-                        </div>
-                        <div class="footer-description">
-                          <span><i class="fa fa-user"></i>كلية تكنولوجيا
-                            المعوماتك</span>
-                          <span><i class="fa fa-user"></i>تخصص وسائط متعددة</span>
-                        </div>
-                      </div>
-                    </div>
-                    <hr />
-                  </div>
                 </div>
               </div>
 
@@ -467,11 +245,11 @@
                     <div class="requests-students">
                       <div class="student">
                         <div class="img-syudent">
-                          <img src="image/header/colleges/8.jfif" alt="" />
+                          <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jpg') }}" alt="" />
                         </div>
                         <div class="description-student">
                           <h6 class="name">
-                            <a href="descRequest.blade.php"> أيمن محمود الشنتف </a>
+                            <a href="{{route('descRequest')}}"> أيمن محمود الشنتف </a>
                           </h6>
                           <span>
                             <i class="fa fa-user"></i>
@@ -490,11 +268,11 @@
                       <hr />
                       <div class="student">
                         <div class="img-syudent">
-                          <img src="image/header/colleges/8.jfif" alt="" />
+                          <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jpg') }}" alt="" />
                         </div>
                         <div class="description-student">
                           <h6 class="name">
-                            <a href="descRequest.blade.php"> أيمن محمود الشنتف </a>
+                            <a href="{{route('descRequest')}}"> أيمن محمود الشنتف </a>
                           </h6>
                           <span>
                             <i class="fa fa-user"></i>
@@ -513,11 +291,11 @@
                       <hr />
                       <div class="student">
                         <div class="img-syudent">
-                          <img src="image/header/colleges/8.jfif" alt="" />
+                          <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jpg') }}" alt="" />
                         </div>
                         <div class="description-student">
                           <h6 class="name">
-                            <a href="descRequest.blade.php"> أيمن محمود الشنتف </a>
+                            <a href="{{route('descRequest')}}"> أيمن محمود الشنتف </a>
                           </h6>
                           <span>
                             <i class="fa fa-user"></i>
@@ -536,11 +314,11 @@
                       <hr />
                       <div class="student">
                         <div class="img-syudent">
-                          <img src="image/header/colleges/8.jfif" alt="" />
+                          <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jpg') }}" alt="" />
                         </div>
                         <div class="description-student">
                           <h6 class="name">
-                            <a href="descRequest.blade.php"> أيمن محمود الشنتف </a>
+                            <a href="{{route('descRequest')}}"> أيمن محمود الشنتف </a>
                           </h6>
                           <span>
                             <i class="fa fa-user"></i>
@@ -559,11 +337,11 @@
                       <hr />
                       <div class="student">
                         <div class="img-syudent">
-                          <img src="image/header/colleges/8.jfif" alt="" />
+                          <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jpg') }}" alt="" />
                         </div>
                         <div class="description-student">
                           <h6 class="name">
-                            <a href="descRequest.blade.php"> أيمن محمود الشنتف </a>
+                            <a href="{{route('descRequest')}}"> أيمن محمود الشنتف </a>
                           </h6>
                           <span>
                             <i class="fa fa-user"></i>
@@ -580,132 +358,8 @@
                         </div>
                       </div>
                       <hr />
-                    </div>
-                  </div>
-                  <hr style="height: 5px; display: block !important;" />
-                  <div class="request-training">
-                    <div class="title-training-request">
-                      <h6>
-                        <i class="fa fa-minus" aria-hidden="true"></i>
-                        تطوير مشروع ويب
-                      </h6>
-                      <h6>(12 طلب تدريب) </h6>
-                    </div>
-                    <div class="requests-students">
-                      <div class="student">
-                        <div class="img-syudent">
-                          <img src="image/header/colleges/8.jfif" alt="" />
-                        </div>
-                        <div class="description-student">
-                          <h6 class="name">
-                            <a href="descRequest.blade.php"> أيمن محمود الشنتف </a>
-                          </h6>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            كلية تكنلوجيا المعلومات
-                          </span>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            تخصص وسائط متعددة
-                          </span>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            منذ 15 دقيقة
-                          </span>
-                        </div>
-                      </div>
-                      <hr />
-                      <div class="student">
-                        <div class="img-syudent">
-                          <img src="image/header/colleges/8.jfif" alt="" />
-                        </div>
-                        <div class="description-student">
-                          <h6 class="name">
-                            <a href="descRequest.blade.php"> أيمن محمود الشنتف </a>
-                          </h6>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            كلية تكنلوجيا المعلومات
-                          </span>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            تخصص وسائط متعددة
-                          </span>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            منذ 15 دقيقة
-                          </span>
-                        </div>
-                      </div>
-                      <hr />
-                      <div class="student">
-                        <div class="img-syudent">
-                          <img src="image/header/colleges/8.jfif" alt="" />
-                        </div>
-                        <div class="description-student">
-                          <h6 class="name">
-                            <a href="descRequest.blade.php"> أيمن محمود الشنتف </a>
-                          </h6>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            كلية تكنلوجيا المعلومات
-                          </span>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            تخصص وسائط متعددة
-                          </span>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            منذ 15 دقيقة
-                          </span>
-                        </div>
-                      </div>
-                      <hr />
-                      <div class="student">
-                        <div class="img-syudent">
-                          <img src="image/header/colleges/8.jfif" alt="" />
-                        </div>
-                        <div class="description-student">
-                          <h6 class="name">
-                            <a href="descRequest.blade.php"> أيمن محمود الشنتف </a>
-                          </h6>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            كلية تكنلوجيا المعلومات
-                          </span>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            تخصص وسائط متعددة
-                          </span>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            منذ 15 دقيقة
-                          </span>
-                        </div>
-                      </div>
-                      <hr />
-                      <div class="student">
-                        <div class="img-syudent">
-                          <img src="image/header/colleges/8.jfif" alt="" />
-                        </div>
-                        <div class="description-student">
-                          <h6 class="name">
-                            <a href="descRequest.blade.php"> أيمن محمود الشنتف </a>
-                          </h6>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            كلية تكنلوجيا المعلومات
-                          </span>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            تخصص وسائط متعددة
-                          </span>
-                          <span>
-                            <i class="fa fa-user"></i>
-                            منذ 15 دقيقة
-                          </span>
-                        </div>
-                      </div>
+
+
                       <hr />
                     </div>
                   </div>

@@ -23,5 +23,8 @@ class post extends Model
     public function postUser(){
         return $this->belongsTo(User::class , 'user_id' , 'id');
     }
+    public function speechPost(){
+        return $this->hasMany(speech::class , 'post_id' , 'id');
+    }
 
 }

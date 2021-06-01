@@ -3,14 +3,11 @@
 namespace App\Http\Controllers\publicControllers;
 
 use App\Http\Controllers\Controller;
-use App\models\categorie;
-use App\models\governorate;
-use App\models\major;
-use App\models\post;
-use App\models\speech;
+use App\models\contactUs;
+use App\User;
 use Illuminate\Http\Request;
 
-class postsController extends Controller
+class ContactUsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,23 +16,30 @@ class postsController extends Controller
      */
     public function index()
     {
-        $categorie = categorie::all();
-        $governorates = governorate::all();
-        $allPosts = post::all();
-        return view('publicPages.findTraining' , compact('allPosts','categorie','governorates'));
-    }
-    public function descriptionPost($id)
-    {
-
-      $descriptionPost = post::find($id);
-      $similarPosts = post::where('category_id' , $descriptionPost->category_id)->take(5)->get();
-      return view('publicPages.desctraining' , compact('descriptionPost' , 'similarPosts'));
+         $admin = User::where('is_admin' , '1')->where('email', 'forstna@gmail.com')->get();
+        return view("publicPages.contact" , compact('admin'));
     }
 
-    public function specificMajor($id)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
     {
-        $allPosts = post::where('major_id' , $id)->get();
-        return view('publicPages.findTraining' , compact('allPosts'));
+       $addContactUS =contactUs::create([
+           'name'=>$request->name,
+           'speech'=>$request->speech,
+           'mobile'=>$request->mobile,
+           'email'=>$request->email
+       ]);
+       if ($addContactUS){
+           toastr()->success('تم ارسال خطابك بنجاح');
+           return redirect()->route('contactUs');
+       }else{
+           toastr()->error('يوجد خطأ حاول مره أخرى');
+           return redirect()->route('contactUs');
+       }
     }
 
     /**

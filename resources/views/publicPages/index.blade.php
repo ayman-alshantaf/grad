@@ -1,16 +1,18 @@
 @extends('publicPages.layouts.head')
 {{--start head--}}
-@section('title')
-  الصفحة الرئيسية
-@endsection
+@section('title') index @endsection
 {{--start body and navbar--}}
 @section('navbar')
   @include('publicPages.layouts.navbar')
 @endsection
 {{--start content--}}
 @section('content')
+
+
+
+
     <!-- section header -->
-    <div class="section-header">
+    <div class="section-header " style="padding-top: 0px !important;">
       <div class="overly-header"></div>
       <!-- carousel header -->
       <div
@@ -102,7 +104,7 @@
           <p>
             لتتمكم من الحصول على التدريب الميداني .... ولتتمكن من الحصول على
             المتدرب المناسب لشركتك وعملك.... لانشاء الحساب
-            <a href="#">اضغط هنا</a>
+            <a href="{{route('register')}}">اضغط هنا</a>
           </p>
         </div>
         <div class="col-md-6 way-border-bottom way-border-bottom1 hide-way">
@@ -132,9 +134,9 @@
           </div>
         </div>
         <div class="col-md-6 way-border-bottom way-border-bottom2">
-          <h3>انشاء ملف السيرة الذاتية</h3>
+          <h3>أكمال ملفك الشحصي</h3>
           <p>
-              قم بانشاء أفضل سيرة ذاتية خاصة بك حسب المعاير القواعد والمعاير المعروفة للسيرة الذاتية لتتمكن من التقديم على فرص التدريب.
+              قم باكمال الملف الشخصي خاصة بك   لتتمكن من التقديم على فرص التدريب.
           </p>
         </div>
       </div>
@@ -142,7 +144,7 @@
         <div class="col-md-6 way-border" style="padding: 45px 80px 0px 100px">
           <h3>البحث على فرصة تدريب</h3>
           <p>
-              قم بالبحث على فرصة التدريب المناسبة حسب تخصصك الجامعي من خلال الذهاب لصفحة  <a href="majors.blade.php">التخصصات</a> أو من خلال الذهاب لصفحة <a href="findTraining.blade.php">فرص التدريب</a>.
+              قم بالبحث على فرصة التدريب المناسبة حسب تخصصك الجامعي من خلال الذهاب لصفحة  <a href="{{route('majorsController')}}">التخصصات</a> أو من خلال الذهاب لصفحة <a href="{{route('getPost')}}">فرص التدريب</a>.
           </p>
         </div>
         <div class="col-md-6 way-border-bottom way-border-bottom3 hide-way">
@@ -189,89 +191,50 @@
         <h2>الكليات</h2>
         <div class="row">
           <div class="col-md-4">
-            <a href="majors.blade.php" >
               <div class="card-colleges">
                 <div class="overly-colleges"></div>
                 <div class="overly-colleges1"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/1.jfif') }}" alt="" />
                 <h5>تكنولوجيا المعلومات</h5>
               </div>
-            </a>
           </div>
           <div class="col-md-4">
-            <a href="majors.blade.php">
               <div class="card-colleges">
                 <div class="overly-colleges"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/2.jfif') }}" alt="" />
                 <h5>الهندسة</h5>
               </div>
-            </a>
           </div>
           <div class="col-md-4">
-            <a href="majors.blade.php">
               <div class="card-colleges">
                 <div class="overly-colleges"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/3.jfif') }}" alt="" />
                 <h5>الأقتصاد</h5>
               </div>
-            </a>
           </div>
           <div class="col-md-4">
-            <a href="majors.blade.php">
               <div class="card-colleges">
                 <div class="overly-colleges"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jfif') }}" alt="" />
                 <h5>الشريعة والقانون</h5>
               </div>
-            </a>
           </div>
           <div class="col-md-4">
-            <a href="majors.blade.php">
               <div class="card-colleges">
                 <div class="overly-colleges"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/5.jpg') }}" alt="" />
                 <h5>الطب وعلوم الصحة</h5>
               </div>
-            </a>
           </div>
           <div class="col-md-4">
-            <a href="majors.blade.php">
               <div class="card-colleges">
                 <div class="overly-colleges"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/2.jfif') }}" alt="" />
                 <h5>الدراسات المتوسطة</h5>
               </div>
-            </a>
           </div>
-          <!-- <div class="col-md-4">
-            <a href="">
-              <div class="card-colleges">
-                <div class="overly-colleges"></div>
-                <img src="image/header/colleges/8.jfif" alt="" />
-                <h5>الاداب</h5>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a href="">
-              <div class="card-colleges">
-                <div class="overly-colleges"></div>
-                <img src="image/header/colleges/3.jfif" alt="" />
-                <h5>العلوم</h5>
-              </div>
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a href="">
-              <div class="card-colleges">
-                <div class="overly-colleges"></div>
-                <img src="image/header/colleges/10.jpg" alt="" />
-                <h5>الاعلام</h5>
-              </div>
-            </a>
-          </div> -->
         </div>
-        <a href="majors.blade.php">
+        <a href="{{route('majorsController')}}">
           <button class="btn-colleges">المزيد</button>
         </a>
       </div>
@@ -285,7 +248,6 @@
           <i class="fa fa-chevron-left next" aria-hidden="true"></i>
           <i class="fa fa-chevron-right prev" aria-hidden="true"></i>
           <div class="container-slider-majors">
-            <a href="findTraining.blade.php">
               <div class="majors major1">
                 <div class="overly-major"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/1.jfif') }}" alt="" />
@@ -295,8 +257,6 @@
                   <h6>تدريب متاح: <span>25 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="findTraining.blade.php">
               <div class="majors major2">
                 <div class="overly-major"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/2.jfif') }}" alt="" />
@@ -306,8 +266,6 @@
                   <h6>تدريب متاح: <span>15 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="findTraining.blade.php">
               <div class="majors major3">
                 <div class="overly-major"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/10.jpg') }}" alt="" />
@@ -317,8 +275,6 @@
                   <h6>تدريب متاح: <span>32 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="findTraining.blade.php">
               <div class="majors major4">
                 <div class="overly-major"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/5.jpg') }}" alt="" />
@@ -328,8 +284,6 @@
                   <h6>تدريب متاح: <span>25 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="findTraining.blade.php">
               <div class="majors major5">
                 <div class="overly-major"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jfif') }}" alt="" />
@@ -339,8 +293,6 @@
                   <h6>تدريب متاح: <span>25 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="findTraining.blade.php">
               <div class="majors major6">
                 <div class="overly-major"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/2.jfif') }}" alt="" />
@@ -350,8 +302,6 @@
                   <h6>تدريب متاح: <span>25 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="findTraining.blade.php">
               <div class="majors major7">
                 <div class="overly-major"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/5.jpg') }}" alt="" />
@@ -361,12 +311,11 @@
                   <h6>تدريب متاح: <span>25 فرصة</span></h6>
                 </div>
               </div>
-            </a>
           </div>
         </div>
         <div class="more-major">
           <h4>
-            <a href="majors.blade.php"
+            <a href="{{route('majorsController')}}"
               >المزيد <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </a>
           </h4>
@@ -375,14 +324,13 @@
     </div>
 
     <!-- section company -->
-    <div class="section-company">
+    <div class="section-company" style="margin-bottom: 80px">
       <div class="container-fluid">
         <h3>بعض الشركات</h3>
         <div class="container-company">
           <i class="fa fa-chevron-left next" aria-hidden="true"></i>
           <i class="fa fa-chevron-right prev" aria-hidden="true"></i>
           <div class="container-slider-company">
-            <a href="">
               <div class="company">
                 <div class="overly-company"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/1.jfif') }}" alt="" />
@@ -392,8 +340,7 @@
                   <h6>تدريب متاح: <span>25 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="">
+
               <div class="company">
                 <div class="overly-company"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/2.jfif') }}" alt="" />
@@ -403,8 +350,6 @@
                   <h6>تدريب متاح: <span>15 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="">
               <div class="company">
                 <div class="overly-company"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/10.jpg') }}" alt="" />
@@ -414,8 +359,6 @@
                   <h6>تدريب متاح: <span>32 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="">
               <div class="company">
                 <div class="overly-company"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/5.jpg') }}" alt="" />
@@ -425,8 +368,6 @@
                   <h6>تدريب متاح: <span>25 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="">
               <div class="company">
                 <div class="overly-company"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jfif') }}" alt="" />
@@ -436,8 +377,6 @@
                   <h6>تدريب متاح: <span>25 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="">
               <div class="company">
                 <div class="overly-company"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/2.jfif') }}" alt="" />
@@ -447,8 +386,6 @@
                   <h6>تدريب متاح: <span>25 فرصة</span></h6>
                 </div>
               </div>
-            </a>
-            <a href="">
               <div class="company">
                 <div class="overly-company"></div>
                 <img src="{{ URL::asset('publicAssets/image/header/colleges/5.jpg') }}" alt="" />
@@ -458,7 +395,6 @@
                   <h6>تدريب متاح: <span>25 فرصة</span></h6>
                 </div>
               </div>
-            </a>
           </div>
         </div>
         <div class="more-company">

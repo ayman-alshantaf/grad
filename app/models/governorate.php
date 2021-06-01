@@ -2,6 +2,7 @@
 
 namespace App\models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class governorate extends Model
@@ -11,5 +12,8 @@ class governorate extends Model
 
     public function postGovernorate(){
         return $this->hasMany(post::class, 'category_id' , 'id');
+    }
+    public function governorate(){
+        return $this->hasMany(User::class, 'governorate_id' , 'id');
     }
 }

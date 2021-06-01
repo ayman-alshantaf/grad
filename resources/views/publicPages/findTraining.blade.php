@@ -33,76 +33,20 @@
               <form>
                 <div class="section-filter">
                   <div class="title-filter">
-                    <h5>العرض حسب</h5>
-                    <i class="fa fa-chevron-up icon-show-filter" aria-hidden="true"></i>
-                  </div>
-                  <div class="filter-content ">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                        checked>
-                      <label class="form-check-label" for="flexRadioDefault1"> الاحدث </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                      <label class="form-check-label" for="flexRadioDefault2"> الاقدم </label>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="section-filter">
-                  <div class="title-filter">
-                    <h5>الكلية </h5>
+                    <h5>المجالات </h5>
                     <i class="fa fa-chevron-up icon-show-filter" aria-hidden="true"></i>
                   </div>
                   <div class="filter-container">
 
                     <div class="filter-content filter-mask mask">
+                      @foreach($categorie as $category)
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                        <label class="form-check-label" for="flexCheckDefault1">تكنلوجيا المعلومات
+                        <input class="form-check-input category" type="checkbox" value="{{$category->id}}" id="flexCheckDefault{{$category->id}}">
+                        <label class="form-check-label" for="flexCheckDefault1">{{$category->name}}
                           <span>(25)</span></label>
                       </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                        <label class="form-check-label" for="flexCheckDefault1">تكنلوجيا المعلومات
-                          <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                        <label class="form-check-label" for="flexCheckDefault1">تكنلوجيا المعلومات
-                          <span>(25)</span></label>
-                      </div>
+                      @endforeach
 
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                        <label class="form-check-label" for="flexCheckDefault1">تكنلوجيا المعلومات
-                          <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                        <label class="form-check-label" for="flexCheckDefault1">تكنلوجيا المعلومات
-                          <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-                        <label class="form-check-label" for="flexCheckDefault2">تكنلوجيا المعلومات
-                          <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-                        <label class="form-check-label" for="flexCheckDefault3">تكنلوجيا المعلومات
-                          <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
-                        <label class="form-check-label" for="flexCheckDefault4">تكنلوجيا المعلومات
-                          <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5">
-                        <label class="form-check-label" for="flexCheckDefault5">تكنلوجيا المعلومات
-                          <span>(25)</span></label>
-                      </div>
                     </div>
                     <div class="toggle-show-more-filter">
                       <div class="toggle-more check-toggle">
@@ -126,27 +70,11 @@
                   </div>
                   <div class="filter-container" style="display: none;">
                     <div class="filter-content filter-mask mask" >
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                        <label class="form-check-label" for="flexCheckDefault1">مطور مواقع <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-                        <label class="form-check-label" for="flexCheckDefault2">مطور اندرويد<span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-                        <label class="form-check-label" for="flexCheckDefault3">هندسة برمجيات <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
-                        <label class="form-check-label" for="flexCheckDefault4">مطور سطح المكتب
-                          <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5">
-                        <label class="form-check-label" for="flexCheckDefault5"> شبكات <span>(25)</span></label>
-                      </div>
+
+                        <div class="form-check majors">
+                         <small class="text-success">قم باختيار المجال لعرض التخصصات</small>
+                        </div>
+
                     </div>
                     <div class="toggle-show-more-filter">
                       <div class="toggle-more check-toggle">
@@ -171,76 +99,19 @@
                   </div>
                   <div class="filter-container" style="display: none;">
                     <div class="filter-content">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                        <label class="form-check-label" for="flexCheckDefault1"> غزة <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-                        <label class="form-check-label" for="flexCheckDefault2">الشمال <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-                        <label class="form-check-label" for="flexCheckDefault3"> الوسطى <span>(25)</span></label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
-                        <label class="form-check-label" for="flexCheckDefault4"> الجنوب
-                          <span>(25)</span></label>
-                      </div>
-                    </div>
-                    <!-- <div class="toggle-show-more-filter">
-                      <div class="toggle-more check-toggle">
-                        عرض المزيد
-                        <span> <i class="fa fa-chevron-down icon-show-filter" aria-hidden="true"></i>
-                        </span>
-                      </div>
-                      <div class="toggle-hide">
-                        اخفاء المزيد
-                        <span> <i class="fa fa-chevron-up" aria-hidden="true"></i>
-                        </span>
-                      </div>
+                      @foreach($governorates as $governorate)
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault{{$governorate->id}}">
+                          <label class="form-check-label" for="flexCheckDefault1">{{$governorate->name}}
+                            <span>(25)</span></label>
+                        </div>
+                      @endforeach
 
-                    </div> -->
+                    </div>
+
                   </div>
 
                 </div>
-                <!-- <label>العرض حسب</label>
-                  <select class="form-control">
-                    <option>الأحدث</option>
-                    <option>الاقدم</option>
-                  </select>
-                  <label>الكلية</label>
-                  <select class="form-control">
-                    <option>اختيار الكلية</option>
-                    <option>تكنلوجيا المعلومات</option>
-                    <option>تكنلوجيا المعلومات</option>
-                    <option>تكنلوجيا المعلومات</option>
-                    <option>تكنلوجيا المعلومات</option>
-                    <option>تكنلوجيا المعلومات</option>
-                    <option>تكنلوجيا المعلومات</option>
-                  </select>
-
-                  <label>التخصص</label>
-                  <select class="form-control">
-                    <option>اختيار التخصص</option>
-                    <option>تكنلوجيا المعلومات</option>
-                    <option>تكنلوجيا المعلومات</option>
-                    <option>تكنلوجيا المعلومات</option>
-                    <option>تكنلوجيا المعلومات</option>
-                    <option>تكنلوجيا المعلومات</option>
-                    <option>تكنلوجيا المعلومات</option>
-                  </select>
-                  <label>المنطقة</label>
-                  <select class="form-control">
-                    <option>اختيار المنطقة</option>
-                    <option>غزة</option>
-                    <option>غزة</option>
-                    <option>غزة</option>
-                    <option>غزة</option>
-                    <option>غزة</option>
-                    <option>غزة</option>
-                  </select> -->
               </form>
 
             </div>
@@ -252,7 +123,11 @@
             @foreach($allPosts as $post)
             <div class="training">
               <div class="img-company">
-                <img src="image/header/grad/11.jfif" alt="" />
+                @if($post->postUser->image == null)
+                  <img src="{{URL::asset('image/student/null.png')}}" alt="" />
+                @else
+                  <img src="{{URL::asset('image/student') .'/'. $post->postUser->image}}" alt="" />
+                @endif
               </div>
               <div class="description-training">
                 <div class="title-desc-training">
@@ -263,7 +138,7 @@
                     {{$post->postUser->name}}
                   </span>
                   <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>
-                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>
+
                 </div>
                 <div class="content-description">
                   <p class="text-desc-training">
@@ -272,7 +147,7 @@
                 </div>
                 <div class="footer-description">
                   <span><i class="fa fa-user"></i>{{$post->postCategory->name}}</span>
-                  <span><i class="fa fa-user"></i>{{$post->postMajor->name}}</span>
+                  <span><i class="fa fa-user"></i>{{$post->postMajor->id}}</span>
                   <span><i class="fa fa-user"></i>{{$post->postGovernorate->name}}</span>
                 </div>
                 <div class="overly-time-training">
@@ -282,209 +157,7 @@
             </div>
             @endforeach
             @endif
-{{--            <div class="training">--}}
-{{--              <div class="img-company">--}}
-{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
-{{--              </div>--}}
-{{--              <div class="description-training">--}}
-{{--                <div class="title-desc-training">--}}
-{{--                  <a href="desctraining.blade.php">--}}
-{{--                    <h6>تطوير مشروع ويب</h6>--}}
-{{--                  </a>--}}
-{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
-{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
-{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
-{{--                </div>--}}
-{{--                <div class="content-description">--}}
-{{--                  <p class="text-desc-training">--}}
-{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
-{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
-{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
-{{--                  </p>--}}
-{{--                </div>--}}
-{{--                <div class="footer-description">--}}
-{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
-{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
-{{--                </div>--}}
-{{--                <div class="overly-time-training">--}}
-{{--                  <span>أخر موعد: 15/5/2021</span>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-{{--            </div>--}}
-{{--            <div class="training">--}}
-{{--              <div class="img-company">--}}
-{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
-{{--              </div>--}}
-{{--              <div class="description-training">--}}
-{{--                <div class="title-desc-training">--}}
-{{--                  <a href="desctraining.blade.php">--}}
-{{--                    <h6>تطوير مشروع ويب</h6>--}}
-{{--                  </a>--}}
-{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
-{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
-{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
-{{--                </div>--}}
-{{--                <div class="content-description">--}}
-{{--                  <p class="text-desc-training">--}}
-{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
-{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
-{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
-{{--                  </p>--}}
-{{--                </div>--}}
-{{--                <div class="footer-description">--}}
-{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
-{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
-{{--                </div>--}}
-{{--                <div class="overly-time-training">--}}
-{{--                  <span>أخر موعد: 15/5/2021</span>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-{{--            </div>--}}
-{{--            <div class="training">--}}
-{{--              <div class="img-company">--}}
-{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
-{{--              </div>--}}
-{{--              <div class="description-training">--}}
-{{--                <div class="title-desc-training">--}}
-{{--                  <a href="desctraining.blade.php">--}}
-{{--                    <h6>تطوير مشروع ويب</h6>--}}
-{{--                  </a>--}}
-{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
-{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
-{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
-{{--                </div>--}}
-{{--                <div class="content-description">--}}
-{{--                  <p class="text-desc-training">--}}
-{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
-{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
-{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
-{{--                  </p>--}}
-{{--                </div>--}}
-{{--                <div class="footer-description">--}}
-{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
-{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
-{{--                </div>--}}
-{{--                <div class="overly-time-training">--}}
-{{--                  <span>أخر موعد: 15/5/2021</span>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-{{--            </div>--}}
-{{--            <div class="training">--}}
-{{--              <div class="img-company">--}}
-{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
-{{--              </div>--}}
-{{--              <div class="description-training">--}}
-{{--                <div class="title-desc-training">--}}
-{{--                  <a href="desctraining.blade.php">--}}
-{{--                    <h6>تطوير مشروع ويب</h6>--}}
-{{--                  </a>--}}
-{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
-{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
-{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
-{{--                </div>--}}
-{{--                <div class="content-description">--}}
-{{--                  <p class="text-desc-training">--}}
-{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
-{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
-{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
-{{--                  </p>--}}
-{{--                </div>--}}
-{{--                <div class="footer-description">--}}
-{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
-{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
-{{--                </div>--}}
-{{--                <div class="overly-time-training">--}}
-{{--                  <span>أخر موعد: 15/5/2021</span>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-{{--            </div>--}}
-{{--            <div class="training">--}}
-{{--              <div class="img-company">--}}
-{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
-{{--              </div>--}}
-{{--              <div class="description-training">--}}
-{{--                <div class="title-desc-training">--}}
-{{--                  <a href="desctraining.blade.php">--}}
-{{--                    <h6>تطوير مشروع ويب</h6>--}}
-{{--                  </a>--}}
-{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
-{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
-{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
-{{--                </div>--}}
-{{--                <div class="content-description">--}}
-{{--                  <p class="text-desc-training">--}}
-{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
-{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
-{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
-{{--                  </p>--}}
-{{--                </div>--}}
-{{--                <div class="footer-description">--}}
-{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
-{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
-{{--                </div>--}}
-{{--                <div class="overly-time-training">--}}
-{{--                  <span>أخر موعد: 15/5/2021</span>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-{{--            </div>--}}
-{{--            <div class="training">--}}
-{{--              <div class="img-company">--}}
-{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
-{{--              </div>--}}
-{{--              <div class="description-training">--}}
-{{--                <div class="title-desc-training">--}}
-{{--                  <a href="desctraining.blade.php">--}}
-{{--                    <h6>تطوير مشروع ويب</h6>--}}
-{{--                  </a>--}}
-{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
-{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
-{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
-{{--                </div>--}}
-{{--                <div class="content-description">--}}
-{{--                  <p class="text-desc-training">--}}
-{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
-{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
-{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
-{{--                  </p>--}}
-{{--                </div>--}}
-{{--                <div class="footer-description">--}}
-{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
-{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
-{{--                </div>--}}
-{{--                <div class="overly-time-training">--}}
-{{--                  <span>أخر موعد: 15/5/2021</span>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-{{--            </div>--}}
-{{--            <div class="training">--}}
-{{--              <div class="img-company">--}}
-{{--                <img src="image/header/grad/11.jfif" alt="" />--}}
-{{--              </div>--}}
-{{--              <div class="description-training">--}}
-{{--                <div class="title-desc-training">--}}
-{{--                  <a href="desctraining.blade.php">--}}
-{{--                    <h6>تطوير مشروع ويب</h6>--}}
-{{--                  </a>--}}
-{{--                  <span><i class="fa fa-user"></i>شركة العلاء</span>--}}
-{{--                  <span><i class="fa fa-clock-o"></i>منذ 15 دقيقة</span>--}}
-{{--                  <span><i class="fa fa-spinner"></i>5 متقدمين</span>--}}
-{{--                </div>--}}
-{{--                <div class="content-description">--}}
-{{--                  <p class="text-desc-training">--}}
-{{--                    بحاجة الى متدرب يكون قادر على تحمل ضغطات العمل ضمن الفريق--}}
-{{--                    لمساعدة الفريق وتقديم افضل النصائح للمتدرب لحيث يكون--}}
-{{--                    المتدرب قادرا على تنفيذ المهام بقدر ......--}}
-{{--                  </p>--}}
-{{--                </div>--}}
-{{--                <div class="footer-description">--}}
-{{--                  <span><i class="fa fa-user"></i>كلية: تكنولوجيا المعوماتك</span>--}}
-{{--                  <span><i class="fa fa-user"></i>تخصص: وسائط متعددة</span>--}}
-{{--                </div>--}}
-{{--                <div class="overly-time-training">--}}
-{{--                  <span>أخر موعد: 15/5/2021</span>--}}
-{{--                </div>--}}
-{{--              </div>--}}
-{{--            </div>--}}
+
           </div>
         </div>
       </div>
@@ -499,4 +172,40 @@
 {{--start script footer--}}
 @section('footerScript')
   @include('publicPages.layouts.footerScript')
+  <script>
+
+
+      {{--$(document).ready(function (){--}}
+      {{--    $(".category").on('change' , function (){--}}
+
+      {{--        let cat_id=$(this).val();--}}
+      {{--        console.log(cat_id);--}}
+      {{--        let majors = $('.majors');--}}
+      {{--        let appendMajor = '';--}}
+      {{--        $.ajax({--}}
+      {{--            type: 'get',--}}
+      {{--            url:'{{URL::to('findNameMajor')}}',--}}
+      {{--            data:{'id':cat_id},--}}
+      {{--            success:function (data){--}}
+      {{--                let dataLength = data.length;--}}
+      {{--                if (dataLength >= 1){--}}
+      {{--                    for (let i = 0; i < data.length;i++){--}}
+      {{--                        --}}{{--<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault{{$governorate->id}}">--}}
+      {{--                        appendMajor+='<label class="form-check-input" for="flexCheckDefault1" value="'+ data[i].id +'"> '+ data[i].name +'</label>';--}}
+      {{--                    }--}}
+      {{--                }else {--}}
+      {{--                    appendMajor+='<option  value=" ">لا يوجد تخصصات متاحة لهذا المجال</option>';--}}
+      {{--                }--}}
+      {{--               --}}
+      {{--                majors.append(appendMajor);--}}
+      {{--            },--}}
+      {{--            error:function (){--}}
+      {{--            }--}}
+      {{--        });--}}
+      {{--    });--}}
+
+      {{--});--}}
+
+
+  </script>
 @endsection

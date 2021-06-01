@@ -26,12 +26,16 @@ class speechController extends Controller
      */
     public function create(Request $request)
     {
+        $file_extension = $request->cv -> getClientOriginalExtension();
+        $file_name = rand().rand(1 , 1000).'.'.$file_extension;
+        $path = 'fileCv/student';
+        $request -> cv ->move($path , $file_name);
         $addSpeech = speech::create([
             'speech'=>$request->speech,
             'user_s_id'=>$request->user_id,
             'post_id'=>$request->post_id,
             'company_id'=>$request->company_id,
-            'cv_user'=>$request->post_id,
+            'cv_user'=>$file_name,
         ]);
         if ($addSpeech){
             toastr()->success("تم تقديم طلبك بنجاح");

@@ -29,7 +29,7 @@
               <hr />
               <div class="all-info">
                 <div class="name-img">
-                  <img src="image/header/grad/8.jpg" alt="" />
+                  <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jpg') }}" alt="" />
                 </div>
                 <div class="span-info">
                   <h5>تطوير مشروع ويب</h5>
@@ -53,7 +53,7 @@
                 <hr />
                 <div class="all-info">
                   <div class="name-img">
-                    <img src="image/header/grad/9.jpg" alt="" />
+                    <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jpg') }}" alt="" />
                   </div>
                   <div class="span-info">
                     <h5>أيمن محمود الشنتف</h5>
@@ -108,7 +108,7 @@
                 <hr />
                 <div class="request-student">
                   <div class="name-img-students">
-                    <img src="image/header/grad/9.jpg" alt="" />
+                    <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jpg') }}" alt="" />
                   </div>
                   <div class="span-info">
                     <h6>ابراهيم محمد</h6>
@@ -124,7 +124,7 @@
                 </div>
                 <div class="request-student">
                   <div class="name-img-students">
-                    <img src="image/header/grad/9.jpg" alt="" />
+                    <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jpg') }}" alt="" />
                   </div>
                   <div class="span-info">
                     <h6>ابراهيم محمد</h6>
@@ -139,7 +139,7 @@
                   </div>
                 </div>    <div class="request-student">
                   <div class="name-img-students">
-                    <img src="image/header/grad/9.jpg" alt="" />
+                    <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jpg') }}" alt="" />
                   </div>
                   <div class="span-info">
                     <h6>ابراهيم محمد</h6>
@@ -154,7 +154,7 @@
                   </div>
                 </div>    <div class="request-student">
                   <div class="name-img-students">
-                    <img src="image/header/grad/9.jpg" alt="" />
+                    <img src="{{ URL::asset('publicAssets/image/header/colleges/8.jpg') }}" alt="" />
                   </div>
                   <div class="span-info">
                     <h6>ابراهيم محمد</h6>

@@ -1,26 +1,27 @@
 $(document).ready(function () {
   /************** index page **********/
   /*navbar next section */
-
+  if ($("title").text() != " index "){
     let hightNavbar = $(".navbar").innerHeight();
     $(".navbar").next().css({
-        paddingTop: hightNavbar + "px",
-      });
+      paddingTop: hightNavbar + "px",
+    });
     $(window).resize(function () {
       let hightNavbar = $(".navbar").innerHeight();
       $(".navbar").next().css({
-          paddingTop: hightNavbar + "px",
-        });
+        paddingTop: hightNavbar + "px",
+      });
     });
+  }
 
 
   /*navbar background color */
-  if ($("title").text() == "index") {
+  if ($("title").text() == " index ") {
     let myWindowScroll = $(window).scrollTop();
     if (myWindowScroll >= 200) {
       $(".navbar").css("background-color", "#07294d");
     } else {
-      $(".navbar").css("background-color", "#24202031");
+      $(".navbar").css("background-color", "rgba(36, 32, 32, 0.192)");
     }
     $(window).scroll(function () {
       myWindowScroll = $(window).scrollTop();
@@ -42,7 +43,7 @@ $(document).ready(function () {
   }
 
   /*section slider majorsController page*/
-  $(".container-slider-majorsController").slick({
+  $(".container-slider-majors").slick({
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
@@ -116,16 +117,16 @@ $(document).ready(function () {
       },
     ],
   });
-
-  /************** login page **********/
-  if ($("title").text() !== "index") {
-    let navbarHeight = $(".navbar").innerHeight();
-    $(".navbar")
-      .next()
-      .css({
-        paddingTop: navbarHeight + "px",
-      });
-  }
+  //
+  // /************** login page **********/
+  // if ($("title").text() !== "index") {
+  //   let navbarHeight = $(".navbar").innerHeight();
+  //   $(".navbar")
+  //     .next()
+  //     .css({
+  //       paddingTop: navbarHeight + "px",
+  //     });
+  // }
 
   /**************** majorsController ******/
   $(".page-majorsController .title-college h4").on("click", function () {
