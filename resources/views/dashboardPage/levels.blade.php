@@ -37,7 +37,7 @@
           <div class="alert alert-danger">{{$message}}</div>
           @enderror
           <button type="button" class="btn btn-primary mb-20 mr-20 btn-lg" data-toggle="modal"
-                  data-target="#exampleModal" data-whatever="@getbootstrap">اضافة مجال
+                  data-target="#exampleModal" data-whatever="@getbootstrap">اضافة مستوى جديد
           </button>
 
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -51,16 +51,16 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form method="post" action="{{route('dashboard.addCategory')}}">
+                  <form method="post" action="{{route('dashboard.addLevel')}}">
                     @csrf
                     <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">اسم المجال:</label>
+                      <label for="recipient-name" class="col-form-label">اسم المستوى:</label>
                       <input type="text" class="form-control" name="name" id="recipient-name">
 
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button class="btn btn-primary">تعديل</button>
+                      <button class="btn btn-primary">اضافة</button>
                     </div>
                   </form>
                 </div>
@@ -83,35 +83,30 @@
                         <th>{{trans("levels_tran.updated_at")}}</th>
                         <th>{{trans("levels_tran.edit")}}</th>
                         <th>{{trans("levels_tran.delete")}}</th>
-                        <th>االعرض حسب</th>
                       </tr>
                       </thead>
                       <tbody>
                       <?php $i = 0; ?>
-                      @isset($categories)
-                        @foreach($categories as $category)
+                      @isset($levels)
+                        @foreach($levels as $level)
                             <?php $i++; ?>
                             <tr>
                               <td>{{$i}}</td>
-                              <td>{{$category->name}}</td>
-                              <td>{{$category->created_at}}</td>
-                              <td>{{$category->updated_at}}</td>
+                              <td>{{$level->name}}</td>
+                              <td>{{$level->created_at}}</td>
+                              <td>{{$level->updated_at}}</td>
                               <td>
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#edit{{$category->id}}">تعديل<i class="fa fa-edit"></i></button>
+                                        data-target="#edit{{$level->id}}">تعديل<i class="fa fa-edit"></i></button>
                               </td>
                               <td>
                                 <button type="button" class="btn- btn-danger btn-block btn-sm" data-toggle="modal"
-                                        data-target="#delete{{$category->id}}">حذف<i class="fa fa-trash"></i></button>
+                                        data-target="#delete{{$level->id}}">حذف<i class="fa fa-trash"></i></button>
                               </td>
-                              <td>
-                                <button type="button" class="btn btn-success" data-toggle="modal"
-                                        data-target="#edit{{$category->id}}">العرض حسب
-                                </button>
-                              </td>
+
                             </tr>
 
-                            <div class="modal fade" id="edit{{$category->id}}" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="edit{{$level->id}}" tabindex="-1" role="dialog"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -122,13 +117,13 @@
                                     </button>
                                   </div>
                                   <div class="modal-body">
-                                    <form method="post" action="{{route("dashboard.updateCategory" , $category->id)}}">
+                                    <form method="post" action="{{route("dashboard.updateCategory" , $level->id)}}">
                                       @csrf
                                       <div class="form-group">
                                         <div class="col-md">
                                           <label>ادخل المستوى</label>
                                           <input class="form-control" type="text" name="name"
-                                                 value="{{$category->name}}" placeholder="Name Arabic">
+                                                 value="{{$level->name}}" placeholder="Name Arabic">
                                         </div>
 
                                       </div>
@@ -145,7 +140,7 @@
                               </div>
                             </div>
 
-                            <div class="modal fade" id="delete{{$category->id}}" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="delete{{$level->id}}" tabindex="-1" role="dialog"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -156,12 +151,12 @@
                                     </button>
                                   </div>
                                   <div class="modal-body">
-                                    <form method="post" action="{{route("dashboard.deleteCategory", $category->id)}}">
+                                    <form method="post" action="{{route("dashboard.deleteCategory", $level->id)}}">
                                       @csrf
                                       <div class="form-group">
                                         <div class="col-md">
                                           <h6>هل انت متأكد من حذف المستوى؟؟</h6>
-                                          <small class="text-dark">{{$category->name}}</small>
+                                          <small class="text-dark">{{$level->name}}</small>
                                         </div>
 
                                       </div>

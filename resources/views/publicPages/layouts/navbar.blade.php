@@ -26,14 +26,23 @@
       @else
 
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown" aria-expanded="false"
+                  style="background-color: transparent !important;outline: none !important;box-shadow: none !important;">
             {{ Auth::user()->name }}
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();document.getElementById('logout-form').submit();" style="color: black">تسجيل خروج</a></li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
-            <li><a class="dropdown-item" href="{{ route('profileStudent' , Auth::user()->id) }}" style="color: black">الملف الشخصي</a></li>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="margin-top: 11px;line-height: 2.5em;background-color: #07294d73">
+            @if(Auth::user()->is_company == 0)
+              <li><a  href="{{ route('profileStudent' , Auth::user()->id) }}" >الملف الشخصي</a></li>
+            @else
+              <li><a  href="{{ route('profileCompany' , Auth::user()->id) }}" >الملف الشخصي </a></li>
+            @endif
+            <li><a  href="{{ route('logout') }}"
+                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">تسجيل خروج</a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
+
           </ul>
         </div>
       @endguest
@@ -81,19 +90,22 @@
             {{ Auth::user()->name }}
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="margin-top: 11px;line-height: 2.5em;background-color: #07294d73">
+            @if(Auth::user()->is_company == 0)
+              <li><a  href="{{ route('profileStudent' , Auth::user()->id) }}" >الملف الشخصي</a></li>
+            @else
+              <li><a  href="{{ route('profileCompany' , Auth::user()->id) }}" >الملف الشخصي </a></li>
+            @endif
             <li><a  href="{{ route('logout') }}"
                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">تسجيل خروج</a></li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
               @csrf
             </form>
-            @if(Auth::user()->is_company == 0)
-            <li><a  href="{{ route('profileStudent' , Auth::user()->id) }}" >الملف الشخصي</a></li>
-            @else
-              <li><a  href="{{ route('profileCompany' , Auth::user()->id) }}" >الملف الشخصي </a></li>
-            @endif
+
           </ul>
         </div>
       @endguest
     </div>
   </div>
 </nav>
+
+

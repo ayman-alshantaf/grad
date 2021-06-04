@@ -95,6 +95,7 @@
                               type="date"
                               class="form-control"
                               name="final_date"
+
                               required
                             />
                     </div>
@@ -105,6 +106,7 @@
                                 type="text"
                                 class="form-control"
                                 name="training_time"
+                                required
                                 placeholder="مثلا: 15 يوم / أو 3 شهور"
                         />
                     </div>
@@ -127,6 +129,7 @@
                                     type="text"
                                     class="form-control"
                                     name="desc_place"
+                                    required
                                     placeholder="ادخل تفاصيل التدريب بشكل دقيق"
                             />
                             <input type="hidden" value="{{Auth::user()->id}}" name="user_id">

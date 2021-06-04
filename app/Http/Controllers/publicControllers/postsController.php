@@ -34,8 +34,11 @@ class postsController extends Controller
 
     public function specificMajor($id)
     {
+        $categorie = categorie::all();
+        $governorates = governorate::all();
+        $allPosts = post::all();
         $allPosts = post::where('major_id' , $id)->get();
-        return view('publicPages.findTraining' , compact('allPosts'));
+        return view('publicPages.findTraining' , compact('allPosts','categorie' , 'governorates' , 'allPosts'));
     }
 
     /**

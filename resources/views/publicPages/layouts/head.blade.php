@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>@yield('title')</title>
   <link href="{{URL::asset('publicAssets/css/bootstrap.min.css')}}" rel="stylesheet" />
+  <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}" type="image/x-icon" />
   <link href="{{URL::asset('publicAssets/css/font-awesome.min.css')}}" rel="stylesheet" />
   <link rel="preconnect" href="{{URL::asset('https://fonts.gstatic.com')}}" />
   <link
